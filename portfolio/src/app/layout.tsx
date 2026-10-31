@@ -1,13 +1,72 @@
-import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
-const font = Manrope({ subsets: ["latin"], display: "swap" });
+import { siteConfig } from "@/data/portfolio";
+import { ThemeProvider } from "@/components/ThemeProvider";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0f" },
+    { media: "(prefers-color-scheme: light)", color: "#f8f8fc" },
+  ],
+};
 
 export const metadata: Metadata = {
-  title: "Your Name | Full-stack Next.js & AWS Developer",
-  description: "Full-stack developer with 2+ years of experience and 8+ shipped projects on Next.js, Node.js and AWS.",
-  metadataBase: new URL(process.env.SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: {
+    default: `${siteConfig.name} — ${siteConfig.title}`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: [
+    "Full-Stack Developer",
+    "MERN Stack",
+    "Next.js Developer",
+    "React Developer",
+    "Node.js",
+    "AWS",
+    "Web Developer Pakistan",
+    "Freelance Developer",
+  ],
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.siteUrl,
+    title: `${siteConfig.name} — ${siteConfig.title}`,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} — ${siteConfig.title}`,
+    description: siteConfig.description,
+    creator: "@yourhandle",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
 };
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body className={font.className}>{children}</body></html>;
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
+      <body className="noise-bg grid-bg" suppressHydrationWarning>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
+    </html>
+  );
 }
