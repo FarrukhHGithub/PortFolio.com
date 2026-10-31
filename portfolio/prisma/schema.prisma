@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(ADMIN)
+  createdAt    DateTime @default(now())
+  audits       AuditLog[]
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  summary     String
+  stack       String[]
+  liveUrl     String?
+  repoUrl     String?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@index([published, sortOrder])
+}
+
+model Skill {
+  id        String @id @default(cuid())
+  name      String @unique
+  category  String            // Frontend, Backend, AWS, DevOps
+  level     Int    @default(3) // 1-5
+  sortOrder Int    @default(0)
+}
+
+model Experience {
+  id        String    @id @default(cuid())
+  company   String
+  role      String
+  startDate DateTime
+  endDate   DateTime?
+  summary   String
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  body      String
+  ip        String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  @@index([read, createdAt])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  entity    String
+  entityId  String?
+  ip        String?
+  createdAt DateTime @default(now())
+}
