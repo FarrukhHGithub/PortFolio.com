@@ -1,0 +1,31 @@
+.header {
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  line-height: 1.2;
+}
+
+.description {
+  margin-top: 0.75rem;
+  font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+  color: var(--color-ink-muted);
+  max-width: 600px;
+  line-height: 1.6;
+}
