@@ -4,7 +4,7 @@ export default function Login() {
   const [err, setErr] = useState("");
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const d = Object.fromEntries(new FormData(e.currentTarget));
+    const d = Object.fromEntries(new FormData(e.currentTarget) as any);
     const r = await fetch("/api/auth/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(d) });
     if (r.ok) location.href = "/admin"; else setErr((await r.json()).error);
   }
