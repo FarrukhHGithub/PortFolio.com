@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Container, ThemeToggle, Button } from "@/components/UI/shared";
+import { Container, ThemeToggle, Button } from "@/components/ui/shared";
 import styles from "@/components/UIstyle/portfolio/navbar.module.css";
 
 const navLinks = [

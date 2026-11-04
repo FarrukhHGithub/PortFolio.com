@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Terminal } from "lucide-react";
-import { Container, Button, Badge } from "@/components/UI/shared";
+import { Container, Button, Badge } from "@/components/ui/shared";
 import styles from "@/components/UIstyle/portfolio/hero.module.css";
 
 interface HeroProps {

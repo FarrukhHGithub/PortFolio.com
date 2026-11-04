@@ -1,6 +1,6 @@
 import React from "react";
 import { Mail, MapPin, Clock } from "lucide-react";
-import { Container, Card } from "@/components/UI/shared";
+import { Container, Card } from "@/components/ui/shared";
 import { ContactForm } from "./ContactForm";
 import styles from "@/components/UIstyle/portfolio/contact.module.css";
 

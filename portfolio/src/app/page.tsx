@@ -13,7 +13,7 @@ import {
   Experience,
   Contact,
   Footer,
-} from "@/components/UI/portfolio";
+} from "@/components/ui/portfolio";
 
 export const revalidate = 300;
 
