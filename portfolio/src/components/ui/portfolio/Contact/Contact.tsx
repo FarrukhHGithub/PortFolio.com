@@ -46,14 +46,14 @@ export function Contact({
               </div>
               <div className={styles.detailItem}>
                 <Phone size={18} className={styles.detailIcon} />
-                <a href={telHref}>{phone}</a>
+                <a href={telHref}>{phone} (03498115909)</a>
               </div>
               <div className={styles.detailItem}>
                 <span className={styles.whatsappIcon}>
                   <WhatsAppIcon size={18} />
                 </span>
                 <a href={whatsapp} target="_blank" rel="noopener noreferrer">
-                  WhatsApp: {phone}
+                  WhatsApp: 03498115909
                 </a>
               </div>
               <div className={styles.detailItem}>
@@ -74,7 +74,7 @@ export function Contact({
               aria-label="Direct message on WhatsApp"
             >
               <WhatsAppIcon size={18} />
-              <span>Chat on WhatsApp ({phone})</span>
+              <span>Chat on WhatsApp (03498115909)</span>
             </a>
           </div>
 
