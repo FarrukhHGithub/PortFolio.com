@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Send, Loader2, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/UI/shared";
+import { Button } from "@/components/ui/shared";
 import { sendContactMessage } from "@/services/contactService";
 import styles from "@/components/UIstyle/portfolio/contact-form.module.css";
 

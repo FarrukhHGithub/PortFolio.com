@@ -1,6 +1,6 @@
 import React from "react";
 import { Server, Cloud, Cpu, ShieldCheck } from "lucide-react";
-import { Container, SectionHeader, Card } from "@/components/UI/shared";
+import { Container, SectionHeader, Card } from "@/components/ui/shared";
 import styles from "@/components/UIstyle/portfolio/about.module.css";
 
 const highlights = [
@@ -21,7 +21,7 @@ const highlights = [
   },
 ];
 
-export function About({ name = "Farrukh H" }: { name?: string }) {
+export function About({ name = "Farrukh Hussain" }: { name?: string }) {
   return (
     <section className={styles.section} id="about">
       <Container>

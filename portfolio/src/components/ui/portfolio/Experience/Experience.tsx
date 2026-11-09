@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, SectionHeader } from "@/components/UI/shared";
+import { Container, SectionHeader } from "@/components/ui/shared";
 import styles from "@/components/UIstyle/portfolio/experience.module.css";
 
 export interface ExperienceItem {

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ArrowUp } from "lucide-react";
-import { Container } from "@/components/UI/shared";
+import { Container } from "@/components/ui/shared";
 import styles from "@/components/UIstyle/portfolio/footer.module.css";
 
 interface FooterProps {
@@ -29,7 +29,7 @@ function LinkedinIcon({ size = 18 }: { size?: number }) {
 }
 
 export function Footer({
-  name = "Farrukh H",
+  name = "Farrukh Hussain",
   github = "https://github.com/FarrukhHGithub",
   linkedin = "https://linkedin.com",
 }: FooterProps) {

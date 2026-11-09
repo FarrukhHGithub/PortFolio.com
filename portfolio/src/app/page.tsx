@@ -13,7 +13,7 @@ import {
   Experience,
   Contact,
   Footer,
-} from "@/components/UI/portfolio";
+} from "@/components/ui/portfolio";
 
 export const revalidate = 300;
 
@@ -27,7 +27,7 @@ export default async function Home() {
     repoUrl: p.repoUrl ?? null,
   }));
 
-  let skillsList = fallbackSkills.map((s) => ({
+  let skillsList: { name: string; category: string }[] = fallbackSkills.map((s) => ({
     name: s.name,
     category: s.category,
   }));

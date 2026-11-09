@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Terminal } from "lucide-react";
-import { Container, Button, Badge } from "@/components/UI/shared";
+import { Container, Button, Badge } from "@/components/ui/shared";
 import styles from "@/components/UIstyle/portfolio/hero.module.css";
 
 interface HeroProps {
@@ -15,7 +15,7 @@ interface HeroProps {
 const fadeMotion = {
   initial: { opacity: 0, y: 16 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.35, ease: "easeOut" },
+  transition: { duration: 0.35, ease: "easeOut" as const },
 };
 
 export function Hero({ name, tagline, description }: HeroProps) {
