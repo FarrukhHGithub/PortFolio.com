@@ -10,7 +10,7 @@ export const siteConfig = {
   tagline: "I build fast web products and deploy them at scale.",
   description:
     "Full-stack developer specialising in MERN stack and Next.js. 2+ years shipping production apps on Hostinger VPS and AWS.",
-  location: "Pakistan 🇵🇰",
+  location: "Pakistan",
   availableForWork: true,
   email: "bussinessguy5909@gmail.com",
   phone: "+92 349 8115909",
@@ -35,39 +35,38 @@ export type SkillCategory =
 export interface Skill {
   name: string;
   category: SkillCategory;
-  icon?: string;
 }
 
 export const skills: Skill[] = [
-  { name: "React", category: "Frontend", icon: "⚛️" },
-  { name: "Next.js", category: "Frontend", icon: "▲" },
-  { name: "TypeScript", category: "Frontend", icon: "TS" },
-  { name: "Tailwind CSS", category: "Frontend", icon: "🎨" },
-  { name: "Framer Motion", category: "Frontend", icon: "✦" },
-  { name: "HTML / CSS", category: "Frontend", icon: "🌐" },
-  { name: "Node.js", category: "Backend", icon: "🟩" },
-  { name: "Express.js", category: "Backend", icon: "🚂" },
-  { name: "REST APIs", category: "Backend", icon: "🔌" },
-  { name: "JWT / Auth", category: "Backend", icon: "🔐" },
-  { name: "Zod", category: "Backend", icon: "✅" },
-  { name: "MongoDB", category: "Database", icon: "🍃" },
-  { name: "PostgreSQL", category: "Database", icon: "🐘" },
-  { name: "Prisma ORM", category: "Database", icon: "◆" },
-  { name: "Redis", category: "Database", icon: "♦" },
-  { name: "AWS EC2", category: "DevOps & Cloud", icon: "☁️" },
-  { name: "AWS S3", category: "DevOps & Cloud", icon: "🗄️" },
-  { name: "CloudFront", category: "DevOps & Cloud", icon: "🌍" },
-  { name: "Route 53", category: "DevOps & Cloud", icon: "📡" },
-  { name: "Nginx", category: "DevOps & Cloud", icon: "🔀" },
-  { name: "PM2", category: "DevOps & Cloud", icon: "⚙️" },
-  { name: "Certbot / SSL", category: "DevOps & Cloud", icon: "🔒" },
-  { name: "Git / GitHub", category: "Tools", icon: "🐙" },
-  { name: "Docker", category: "Tools", icon: "🐳" },
-  { name: "Postman", category: "Tools", icon: "📮" },
-  { name: "Figma", category: "Tools", icon: "🖌️" },
-  { name: "AI Coding & Agents", category: "Tools", icon: "🤖" },
-  { name: "Hostinger VPS", category: "DevOps & Cloud", icon: "🖥️" },
-  { name: "Linux / Bash", category: "DevOps & Cloud", icon: "🐧" },
+  { name: "React", category: "Frontend" },
+  { name: "Next.js", category: "Frontend" },
+  { name: "TypeScript", category: "Frontend" },
+  { name: "Tailwind CSS", category: "Frontend" },
+  { name: "Framer Motion", category: "Frontend" },
+  { name: "HTML / CSS", category: "Frontend" },
+  { name: "Node.js", category: "Backend" },
+  { name: "Express.js", category: "Backend" },
+  { name: "REST APIs", category: "Backend" },
+  { name: "JWT / Auth", category: "Backend" },
+  { name: "Zod", category: "Backend" },
+  { name: "MongoDB", category: "Database" },
+  { name: "PostgreSQL", category: "Database" },
+  { name: "Prisma ORM", category: "Database" },
+  { name: "Redis", category: "Database" },
+  { name: "AWS EC2", category: "DevOps & Cloud" },
+  { name: "AWS S3", category: "DevOps & Cloud" },
+  { name: "CloudFront", category: "DevOps & Cloud" },
+  { name: "Route 53", category: "DevOps & Cloud" },
+  { name: "Nginx", category: "DevOps & Cloud" },
+  { name: "PM2", category: "DevOps & Cloud" },
+  { name: "Certbot / SSL", category: "DevOps & Cloud" },
+  { name: "Git / GitHub", category: "Tools" },
+  { name: "Docker", category: "Tools" },
+  { name: "Postman", category: "Tools" },
+  { name: "Figma", category: "Tools" },
+  { name: "AI Coding & Agents", category: "Tools" },
+  { name: "Hostinger VPS", category: "DevOps & Cloud" },
+  { name: "Linux / Bash", category: "DevOps & Cloud" },
 ];
 
 // ── Projects ──────────────────────────────────────────────────
@@ -249,7 +248,6 @@ export const experience: Experience[] = [
 
 // ── Services ──────────────────────────────────────────────────
 export interface Service {
-  icon: string;
   title: string;
   description: string;
   bullets: string[];
@@ -257,7 +255,6 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    icon: "🖥️",
     title: "Web Application Development",
     description: "End-to-end web apps from idea to production.",
     bullets: [
@@ -268,7 +265,6 @@ export const services: Service[] = [
     ],
   },
   {
-    icon: "☁️",
     title: "Cloud & VPS Deployment",
     description: "I get your app live, secure, and fast.",
     bullets: [
@@ -279,7 +275,6 @@ export const services: Service[] = [
     ],
   },
   {
-    icon: "⚡",
     title: "Performance Optimisation",
     description: "Make existing apps faster and cheaper to run.",
     bullets: [
@@ -290,7 +285,6 @@ export const services: Service[] = [
     ],
   },
   {
-    icon: "🔧",
     title: "API Development & Integration",
     description: "Clean, documented, production-grade APIs.",
     bullets: [
@@ -361,7 +355,6 @@ export interface Certificate {
   id: string;
   title: string;
   issuer: string;
-  issuerIcon?: string;
   category: CertificateCategory;
   issueDate: string;
   credentialId: string;
@@ -375,7 +368,6 @@ export const certificates: Certificate[] = [
     id: "cert-frontend",
     title: "Meta Certified Front-End Developer",
     issuer: "Meta (Coursera)",
-    issuerIcon: "🌐",
     category: "Frontend",
     issueDate: "2024",
     credentialId: "META-FED-98431",
@@ -388,7 +380,6 @@ export const certificates: Certificate[] = [
     id: "cert-backend",
     title: "Node.js Services & REST API Specialist",
     issuer: "OpenJS Foundation & Linux Foundation",
-    issuerIcon: "🟩",
     category: "Backend",
     issueDate: "2024",
     credentialId: "JSF-NAD-77209",
@@ -401,7 +392,6 @@ export const certificates: Certificate[] = [
     id: "cert-vps",
     title: "Linux Server Administration & VPS Architecture",
     issuer: "Linux Professional Institute (LPIC)",
-    issuerIcon: "🐧",
     category: "VPS",
     issueDate: "2023",
     credentialId: "LPI-VPS-61042",
@@ -414,7 +404,6 @@ export const certificates: Certificate[] = [
     id: "cert-aws",
     title: "AWS Certified Solutions Architect – Associate",
     issuer: "Amazon Web Services (AWS)",
-    issuerIcon: "☁️",
     category: "AWS",
     issueDate: "2024",
     credentialId: "AWS-SAA-83921",
@@ -427,7 +416,6 @@ export const certificates: Certificate[] = [
     id: "cert-ai",
     title: "AI-Assisted Software Engineering & Agentic Workflows",
     issuer: "DeepLearning.AI",
-    issuerIcon: "🤖",
     category: "AI Coding",
     issueDate: "2025",
     credentialId: "DLAI-AIC-49170",
@@ -440,7 +428,6 @@ export const certificates: Certificate[] = [
     id: "cert-db",
     title: "Database Architecture: PostgreSQL & MongoDB",
     issuer: "MongoDB University & Postgres Professional",
-    issuerIcon: "🍃",
     category: "Database",
     issueDate: "2024",
     credentialId: "DB-SPEC-31950",
@@ -453,7 +440,6 @@ export const certificates: Certificate[] = [
     id: "cert-fullstack",
     title: "Professional Full-Stack Developer Certification",
     issuer: "IBM & freeCodeCamp",
-    issuerIcon: "⚛️",
     category: "Full-Stack",
     issueDate: "2023",
     credentialId: "IBM-FS-55018",

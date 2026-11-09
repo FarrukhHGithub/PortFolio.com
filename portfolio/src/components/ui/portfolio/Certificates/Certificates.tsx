@@ -73,11 +73,6 @@ export function Certificates({
               </div>
 
               <div className={styles.issuerRow}>
-                {cert.issuerIcon && (
-                  <span className={styles.issuerIcon} aria-hidden="true">
-                    {cert.issuerIcon}
-                  </span>
-                )}
                 <span>{cert.issuer}</span>
                 <CheckCircle2 size={14} className={styles.verifiedIcon} aria-label="Verified" />
               </div>
