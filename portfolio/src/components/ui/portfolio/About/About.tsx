@@ -21,7 +21,7 @@ const highlights = [
   },
 ];
 
-export function About({ name = "Farrukh H" }: { name?: string }) {
+export function About({ name = "Farrukh Hussain" }: { name?: string }) {
   return (
     <section className={styles.section} id="about">
       <Container>

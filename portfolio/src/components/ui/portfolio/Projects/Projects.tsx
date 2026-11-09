@@ -1,6 +1,6 @@
 import React from "react";
 import { ExternalLink } from "lucide-react";
-import { Container, SectionHeader, Card } from "@/components/UI/shared";
+import { Container, SectionHeader, Card } from "@/components/ui/shared";
 import styles from "@/components/UIstyle/portfolio/projects.module.css";
 
 export interface ProjectItem {

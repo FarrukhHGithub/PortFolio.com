@@ -29,7 +29,7 @@ function LinkedinIcon({ size = 18 }: { size?: number }) {
 }
 
 export function Footer({
-  name = "Farrukh H",
+  name = "Farrukh Hussain",
   github = "https://github.com/FarrukhHGithub",
   linkedin = "https://linkedin.com",
 }: FooterProps) {
