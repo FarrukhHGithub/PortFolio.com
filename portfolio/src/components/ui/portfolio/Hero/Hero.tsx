@@ -34,7 +34,7 @@ export function Hero({ name, tagline, description }: HeroProps) {
             {...fadeMotion}
             transition={{ duration: 0.35, delay: 0.08 }}
           >
-            I build fast <span className={styles.headlineAccent}>Next.js</span> products and scale them in production.
+            Hi, I&apos;m <span className={styles.headlineAccent}>{name}</span> — Full-Stack Developer &amp; Cloud Engineer.
           </motion.h1>
 
           <motion.p

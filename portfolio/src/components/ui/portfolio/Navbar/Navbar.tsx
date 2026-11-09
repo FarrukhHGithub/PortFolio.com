@@ -8,6 +8,7 @@ import styles from "@/components/UIstyle/portfolio/navbar.module.css";
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
+  { href: "#certificates", label: "Certifications" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },

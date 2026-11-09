@@ -3,12 +3,14 @@ import {
   siteConfig,
   projects as fallbackProjects,
   skills as fallbackSkills,
+  certificates as fallbackCertificates,
 } from "@/data/portfolio";
 import {
   Navbar,
   Hero,
   About,
   Skills,
+  Certificates,
   Projects,
   Experience,
   Contact,
@@ -71,14 +73,21 @@ export default async function Home() {
       />
       <About name={siteConfig.name} />
       <Skills skills={skillsList} />
+      <Certificates certificates={fallbackCertificates} />
       <Projects projects={projectsList} />
       <Experience />
-      <Contact email={siteConfig.email} location={siteConfig.location} />
+      <Contact
+        email={siteConfig.email}
+        location={siteConfig.location}
+        phone={siteConfig.phone}
+        whatsapp={siteConfig.whatsapp}
+      />
       <Footer
         name={siteConfig.name}
         github={siteConfig.github}
         linkedin={siteConfig.linkedin}
         twitter={siteConfig.twitter}
+        whatsapp={siteConfig.whatsapp}
       />
     </main>
   );
