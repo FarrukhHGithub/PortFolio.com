@@ -46,9 +46,48 @@
   color: var(--color-ink);
 }
 
+.detailItem a {
+  color: var(--color-ink);
+  transition: color 0.15s ease;
+}
+
+.detailItem a:hover {
+  color: var(--color-brand);
+  text-decoration: underline;
+}
+
 .detailIcon {
   color: var(--color-brand);
   flex-shrink: 0;
+}
+
+.whatsappIcon {
+  color: #25d366;
+  flex-shrink: 0;
+}
+
+.whatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 0.875rem;
+  padding: 0.75rem 1.25rem;
+  background-color: #25d366;
+  color: #0d2e18;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: fit-content;
+  box-shadow: 0 4px 14px 0 rgba(37, 211, 102, 0.25);
+}
+
+.whatsappBtn:hover {
+  background-color: #20bd5a;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(37, 211, 102, 0.35);
 }
 
 .formCard {
