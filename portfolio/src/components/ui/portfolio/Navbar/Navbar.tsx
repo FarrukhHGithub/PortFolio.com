@@ -48,9 +48,11 @@ export function Navbar({ initials = "FH" }: { initials?: string }) {
 
           <div className={styles.actions}>
             <ThemeToggle />
-            <Button variant="primary" size="sm" href="#contact">
-              Let&apos;s talk
-            </Button>
+            <div className={styles.navCta}>
+              <Button variant="primary" size="sm" href="#contact">
+                Let&apos;s talk
+              </Button>
+            </div>
             <button
               type="button"
               className={styles.mobileMenuBtn}
