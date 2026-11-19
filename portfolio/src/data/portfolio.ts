@@ -181,139 +181,18 @@ export const experience: Experience[] = [
   },
 ];
 
-// ── Education & Languages ─────────────────────────────────────
-export interface Education {
-  degree: string;
-  institution: string;
-  period: string;
-  status: string;
-  languages: { name: string; proficiency: string }[];
-}
-
-export const education: Education = {
-  degree: "BS Computer Science (in progress)",
-  institution: "Virtual University of Pakistan",
-  period: "In Progress",
-  status: "In progress",
-  languages: [
-    { name: "English", proficiency: "Professional" },
-    { name: "Urdu", proficiency: "Native" },
-  ],
-};
-
 // ── Projects ──────────────────────────────────────────────────
-export type ProjectCategory = "MERN" | "Next.js" | "Full-Stack";
-
-export interface Project {
-  id: string;
-  slug: string;
-  title: string;
-  summary: string;
-  description: string;
-  category: ProjectCategory;
-  stack: string[];
-  imageUrl?: string;
-  liveUrl?: string;
-  repoUrl?: string;
-  featured: boolean;
-  role: string;
-  result?: string;
-}
-
-export const projects: Project[] = [
-  {
-    id: "p1",
-    slug: "clinic-healthcare-website",
-    title: "Clinic / Healthcare Platform",
-    summary:
-      "Full-stack clinic platform with doctor profiles, appointment inquiries, automated email alerts, and an administrative management portal.",
-    description:
-      "Developed at Netbots SMC Pvt Ltd. Backend API with Node.js, Express, and MongoDB for doctor profiles, services, patient inquiries, and secure admin management with automated email alerts. Responsive, accessible front end built with Next.js.",
-    category: "Full-Stack",
-    stack: ["Node.js", "Express", "MongoDB", "Next.js", "JWT Auth", "Nodemailer"],
-    featured: true,
-    role: "Full-Stack Developer",
-    result: "Automated patient enquiry workflow and reduced appointment response time.",
-    liveUrl: "https://example.com",
-    repoUrl: "https://github.com/FarrukhHGithub",
-  },
-  {
-    id: "p2",
-    slug: "museum-website",
-    title: "Museum & Exhibition Portal",
-    summary:
-      "Content-managed museum website featuring exhibits, galleries, event calendars, image uploads, dynamic filtering, and a protected admin panel.",
-    description:
-      "Built at Netbots SMC Pvt Ltd. Full-stack museum platform with a dynamic backend for exhibits, galleries, and events. Includes image uploads, pagination, filtering endpoints, and a fast, SEO-friendly Next.js client interface.",
-    category: "Full-Stack",
-    stack: ["Node.js", "Express", "MongoDB", "Next.js", "Multer", "Tailwind CSS"],
-    featured: true,
-    role: "Full-Stack Developer",
-    result: "Enabled non-technical staff to publish new exhibits and gallery updates in minutes.",
-    liveUrl: "https://example.com",
-    repoUrl: "https://github.com/FarrukhHGithub",
-  },
-  {
-    id: "p3",
-    slug: "tour-company-platform",
-    title: "Tour & Travel Platform",
-    summary:
-      "Dynamic tour booking platform managing tour packages, destination catalogs, itineraries, and booking inquiries with an SEO-optimized front end.",
-    description:
-      "Full-stack tour platform featuring tour packages, destination itineraries, and booking/enquiry management. Features REST APIs with MongoDB schemas for dynamic content, consumed by an SEO-friendly Next.js front end.",
-    category: "MERN",
-    stack: ["Node.js", "Express", "MongoDB", "Next.js", "REST APIs", "Mongoose"],
-    featured: true,
-    role: "Full-Stack Developer",
-    result: "Improved organic search visibility and mobile booking conversion rates.",
-    liveUrl: "https://example.com",
-    repoUrl: "https://github.com/FarrukhHGithub",
-  },
-  {
-    id: "p4",
-    slug: "saas-analytics-dashboard",
-    title: "SaaS Analytics Dashboard",
-    summary: "Real-time analytics with multi-tenant support and role-based access control.",
-    description:
-      "Multi-tenant SaaS dashboard built with Next.js App Router, Prisma, and PostgreSQL. Features JWT auth, RBAC, and live chart updates.",
-    category: "Next.js",
-    stack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Chart.js"],
-    featured: false,
-    role: "Lead Developer",
-    result: "Cut client reporting time by 70%.",
-    liveUrl: "https://example.com",
-    repoUrl: "https://github.com/FarrukhHGithub",
-  },
-  {
-    id: "p5",
-    slug: "task-management-api",
-    title: "Task Management REST API",
-    summary: "High-throughput RESTful API with BullMQ job queues, Redis caching, and Swagger docs.",
-    description:
-      "Node.js / Express API featuring JWT auth, BullMQ queues, Socket.io events, Redis caching, and OpenAPI specifications.",
-    category: "MERN",
-    stack: ["Node.js", "Express", "MongoDB", "Redis", "BullMQ"],
-    featured: false,
-    role: "Backend Developer",
-    result: "Handles 500 req/s at p99 < 50ms.",
-    repoUrl: "https://github.com/FarrukhHGithub",
-  },
-  {
-    id: "p6",
-    slug: "invoice-billing-saas",
-    title: "Invoice & Billing SaaS",
-    summary: "Generate, send, and track invoices with automated reminders and PDF export.",
-    description:
-      "Invoicing system with automated reminders via Nodemailer, multi-currency support, and revenue tracking.",
-    category: "Full-Stack",
-    stack: ["Next.js", "Prisma", "PostgreSQL", "Puppeteer", "Nodemailer"],
-    featured: false,
-    role: "Solo Developer",
-    result: "Actively used by 3 small business clients.",
-    liveUrl: "https://example.com",
-    repoUrl: "https://github.com/FarrukhHGithub",
-  },
-];
+export {
+  projects,
+  type Project,
+  type ProjectCategory,
+  type ProjectStatus,
+  type ProjectTechStack,
+  type ApiHighlight,
+  type DatabaseModel,
+  type ChallengeSolution,
+  type ProjectScreenshot,
+} from "./projects";
 
 // ── About Content ─────────────────────────────────────────────
 export const aboutBio = [
