@@ -119,3 +119,4 @@ export default function ProjectDetailsPage({ params }: ProjectDetailsPageProps) 
     </main>
   );
 }
+

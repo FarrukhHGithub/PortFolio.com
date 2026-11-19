@@ -57,3 +57,4 @@ export function Education({ educationData = defaultEducation }: EducationProps) 
     </section>
   );
 }
+
