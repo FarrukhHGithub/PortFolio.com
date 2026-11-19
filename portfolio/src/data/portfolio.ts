@@ -1,16 +1,37 @@
 // ============================================================
-// PORTFOLIO DATA — Edit everything here. This is the only file
-// you need to touch to update your portfolio content.
+// PORTFOLIO DATA — Centralized typed configuration & content
 // ============================================================
 
-export const siteConfig = {
+export interface SiteConfig {
+  name: string;
+  initials: string;
+  title: string;
+  tagline: string;
+  summary: string;
+  experienceYears: string;
+  location: string;
+  availableForWork: boolean;
+  email: string;
+  phone: string;
+  phoneRaw: string;
+  whatsapp: string;
+  whatsappNumber: string;
+  github: string;
+  linkedin: string;
+  twitter: string;
+  cvUrl: string;
+  siteUrl: string;
+}
+
+export const siteConfig: SiteConfig = {
   name: "Farrukh Hussain",
   initials: "FH",
-  title: "Full-Stack Developer",
-  tagline: "I build fast web products and deploy them at scale.",
-  description:
-    "Full-stack developer specialising in MERN stack and Next.js. 2+ years shipping production apps on Hostinger VPS and AWS.",
-  location: "Pakistan",
+  title: "Full-Stack Developer | MERN Stack & Next.js",
+  tagline: "I build fast, secure web products with the MERN stack and Next.js.",
+  summary:
+    "Full-stack developer with 2+ years of experience building complete web applications with the MERN stack and Next.js, with particular strength in backend development: secure REST APIs, authentication, database design and admin systems. Started at Netbots SMC Private Limited, and now a freelancer delivering clinic, museum and tour company websites end to end.",
+  experienceYears: "2+ years",
+  location: "Rawalpindi, Pakistan",
   availableForWork: true,
   email: "bussinessguy5909@gmail.com",
   phone: "+92 349 8115909",
@@ -20,66 +41,178 @@ export const siteConfig = {
   github: "https://github.com/FarrukhHGithub",
   linkedin: "https://linkedin.com/in/farrukh-hussain",
   twitter: "https://twitter.com/farrukh_dev",
-  cvUrl: "/cv.pdf",
+  cvUrl: "/CV_FullstackDevelopers.pdf",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 };
 
 // ── Skills ────────────────────────────────────────────────────
 export type SkillCategory =
-  | "Frontend"
   | "Backend"
   | "Database"
-  | "DevOps & Cloud"
-  | "Tools";
+  | "Frontend"
+  | "Tools"
+  | "Professional";
 
-export interface Skill {
-  name: string;
+export interface SkillCategoryGroup {
   category: SkillCategory;
+  isCoreStrength?: boolean;
+  items: string[];
 }
 
-export const skills: Skill[] = [
-  { name: "React", category: "Frontend" },
-  { name: "Next.js", category: "Frontend" },
-  { name: "TypeScript", category: "Frontend" },
-  { name: "Tailwind CSS", category: "Frontend" },
-  { name: "Framer Motion", category: "Frontend" },
-  { name: "HTML / CSS", category: "Frontend" },
-  { name: "Node.js", category: "Backend" },
-  { name: "Express.js", category: "Backend" },
-  { name: "REST APIs", category: "Backend" },
-  { name: "JWT / Auth", category: "Backend" },
-  { name: "Zod", category: "Backend" },
-  { name: "MongoDB", category: "Database" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "Prisma ORM", category: "Database" },
-  { name: "Redis", category: "Database" },
-  { name: "AWS EC2", category: "DevOps & Cloud" },
-  { name: "AWS S3", category: "DevOps & Cloud" },
-  { name: "CloudFront", category: "DevOps & Cloud" },
-  { name: "Route 53", category: "DevOps & Cloud" },
-  { name: "Nginx", category: "DevOps & Cloud" },
-  { name: "PM2", category: "DevOps & Cloud" },
-  { name: "Certbot / SSL", category: "DevOps & Cloud" },
-  { name: "Git / GitHub", category: "Tools" },
-  { name: "Docker", category: "Tools" },
-  { name: "Postman", category: "Tools" },
-  { name: "Figma", category: "Tools" },
-  { name: "AI Coding & Agents", category: "Tools" },
-  { name: "Hostinger VPS", category: "DevOps & Cloud" },
-  { name: "Linux / Bash", category: "DevOps & Cloud" },
+export const skillCategories: SkillCategoryGroup[] = [
+  {
+    category: "Backend",
+    isCoreStrength: true,
+    items: [
+      "Node.js",
+      "Express.js",
+      "RESTful API design",
+      "JWT authentication",
+      "Role-based access control",
+      "Middleware",
+      "Input validation",
+      "Error handling",
+      "File/image uploads",
+      "Email integration",
+    ],
+  },
+  {
+    category: "Database",
+    items: [
+      "MongoDB",
+      "Mongoose ODM",
+      "Schema design",
+      "Indexing",
+      "Aggregation pipelines",
+      "CRUD optimisation",
+      "PostgreSQL",
+      "Prisma ORM",
+    ],
+  },
+  {
+    category: "Frontend",
+    items: [
+      "Next.js (SSR, SSG, ISR)",
+      "React.js",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Responsive UI",
+      "API integration",
+      "SEO",
+    ],
+  },
+  {
+    category: "Tools",
+    items: [
+      "Git",
+      "GitHub",
+      "Postman",
+      "Vercel",
+      "VPS / cPanel basics",
+      "Linux / Bash",
+      "Docker",
+      "Environment configuration",
+      "npm",
+    ],
+  },
+  {
+    category: "Professional",
+    items: [
+      "Requirements analysis",
+      "End-to-end delivery",
+      "System architecture",
+      "Code review",
+      "Client communication",
+      "Problem solving",
+    ],
+  },
 ];
+
+// Flat skills array for backward compatibility & DB fallback
+export interface Skill {
+  name: string;
+  category: string;
+}
+
+export const skills: Skill[] = skillCategories.flatMap((g) =>
+  g.items.map((name) => ({ name, category: g.category }))
+);
+
+// ── Experience ────────────────────────────────────────────────
+export interface Experience {
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  bullets: string[];
+  tech: string[];
+}
+
+export const experience: Experience[] = [
+  {
+    role: "Freelance Full-Stack Developer",
+    company: "Self-employed",
+    location: "Remote",
+    period: "Mid 2025 — Present",
+    bullets: [
+      "Built custom APIs and full-stack web applications for clients using the MERN stack and Next.js.",
+      "Handled the full cycle: requirements, API and database design, development, deployment and support.",
+      "Delivered production clinic, museum, and tour company websites with secure authentication, admin panels, and optimized performance.",
+    ],
+    tech: ["Next.js", "React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "REST APIs"],
+  },
+  {
+    role: "Full-Stack (MERN & Next.js) Developer",
+    company: "Netbots SMC Private Limited",
+    location: "Rawalpindi, Pakistan",
+    period: "Late 2024 — Mid 2025",
+    bullets: [
+      "Designed and built REST APIs with Node.js and Express.js using MVC structure and reusable middleware.",
+      "Modelled data and optimised MongoDB queries (Mongoose) for content, enquiries and users.",
+      "Implemented secure JWT-based authentication and admin access control, with validation and centralised error handling.",
+      "Built responsive, SEO-friendly Next.js and React front ends, integrated them with the APIs, and deployed and maintained applications in production.",
+      "Completed 4 client projects (clinic, museum and two tour company websites); developed a new tour company website.",
+    ],
+    tech: ["Node.js", "Express.js", "MongoDB", "Mongoose", "Next.js", "React.js", "JWT Auth", "REST APIs"],
+  },
+];
+
+// ── Education & Languages ─────────────────────────────────────
+export interface Education {
+  degree: string;
+  institution: string;
+  period: string;
+  status: string;
+  languages: { name: string; proficiency: string }[];
+}
+
+export const education: Education = {
+  degree: "BS Computer Science (in progress)",
+  institution: "Virtual University of Pakistan",
+  period: "In Progress",
+  status: "In progress",
+  languages: [
+    { name: "English", proficiency: "Professional" },
+    { name: "Urdu", proficiency: "Native" },
+  ],
+};
 
 // ── Projects ──────────────────────────────────────────────────
 export type ProjectCategory = "MERN" | "Next.js" | "Full-Stack";
 
 export interface Project {
   id: string;
+  slug: string;
   title: string;
   summary: string;
   description: string;
   category: ProjectCategory;
   stack: string[];
-  imageUrl: string;
+  imageUrl?: string;
   liveUrl?: string;
   repoUrl?: string;
   featured: boolean;
@@ -90,255 +223,109 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "p1",
-    title: "E-Commerce Platform",
-    summary: "Full-featured online store with real-time inventory and Stripe payments.",
+    slug: "clinic-healthcare-website",
+    title: "Clinic / Healthcare Platform",
+    summary:
+      "Full-stack clinic platform with doctor profiles, appointment inquiries, automated email alerts, and an administrative management portal.",
     description:
-      "Production-ready e-commerce platform with product catalog, cart, Stripe Checkout, order management, and an admin dashboard. Deployed on AWS EC2 behind CloudFront with automated SSL renewal.",
-    category: "MERN",
-    stack: ["React", "Node.js", "Express", "MongoDB", "Stripe", "AWS EC2"],
-    imageUrl: "/projects/ecommerce.png",
+      "Developed at Netbots SMC Pvt Ltd. Backend API with Node.js, Express, and MongoDB for doctor profiles, services, patient inquiries, and secure admin management with automated email alerts. Responsive, accessible front end built with Next.js.",
+    category: "Full-Stack",
+    stack: ["Node.js", "Express", "MongoDB", "Next.js", "JWT Auth", "Nodemailer"],
+    featured: true,
+    role: "Full-Stack Developer",
+    result: "Automated patient enquiry workflow and reduced appointment response time.",
     liveUrl: "https://example.com",
     repoUrl: "https://github.com/FarrukhHGithub",
-    featured: true,
-    role: "Solo Developer",
-    result: "Processed 1 200+ orders in the first month.",
   },
   {
     id: "p2",
-    title: "SaaS Analytics Dashboard",
-    summary: "Real-time analytics with multi-tenant support and role-based access.",
+    slug: "museum-website",
+    title: "Museum & Exhibition Portal",
+    summary:
+      "Content-managed museum website featuring exhibits, galleries, event calendars, image uploads, dynamic filtering, and a protected admin panel.",
     description:
-      "Multi-tenant SaaS dashboard built with Next.js App Router, Prisma, and PostgreSQL. Features JWT auth, RBAC, and live chart updates via Server-Sent Events.",
-    category: "Next.js",
-    stack: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Chart.js"],
-    imageUrl: "/projects/dashboard.png",
+      "Built at Netbots SMC Pvt Ltd. Full-stack museum platform with a dynamic backend for exhibits, galleries, and events. Includes image uploads, pagination, filtering endpoints, and a fast, SEO-friendly Next.js client interface.",
+    category: "Full-Stack",
+    stack: ["Node.js", "Express", "MongoDB", "Next.js", "Multer", "Tailwind CSS"],
+    featured: true,
+    role: "Full-Stack Developer",
+    result: "Enabled non-technical staff to publish new exhibits and gallery updates in minutes.",
     liveUrl: "https://example.com",
     repoUrl: "https://github.com/FarrukhHGithub",
-    featured: true,
-    role: "Lead Developer",
-    result: "Cut client reporting time by 70 %.",
   },
   {
     id: "p3",
-    title: "Real-Estate Listing Portal",
-    summary: "Property search with filters — server-side rendered for SEO.",
+    slug: "tour-company-platform",
+    title: "Tour & Travel Platform",
+    summary:
+      "Dynamic tour booking platform managing tour packages, destination catalogs, itineraries, and booking inquiries with an SEO-optimized front end.",
     description:
-      "Next.js 14 portal with server components, ISR, advanced filters, Google Maps integration, and an admin CMS. Hosted on Hostinger VPS with Nginx + PM2.",
-    category: "Next.js",
-    stack: ["Next.js", "TypeScript", "MongoDB", "Tailwind CSS", "Google Maps"],
-    imageUrl: "/projects/realestate.png",
+      "Full-stack tour platform featuring tour packages, destination itineraries, and booking/enquiry management. Features REST APIs with MongoDB schemas for dynamic content, consumed by an SEO-friendly Next.js front end.",
+    category: "MERN",
+    stack: ["Node.js", "Express", "MongoDB", "Next.js", "REST APIs", "Mongoose"],
+    featured: true,
+    role: "Full-Stack Developer",
+    result: "Improved organic search visibility and mobile booking conversion rates.",
     liveUrl: "https://example.com",
     repoUrl: "https://github.com/FarrukhHGithub",
-    featured: true,
-    role: "Solo Developer",
-    result: "Lighthouse score 97 / 100.",
   },
   {
     id: "p4",
-    title: "Task Management API",
-    summary: "RESTful API with WebSocket notifications, queues, and Swagger docs.",
+    slug: "saas-analytics-dashboard",
+    title: "SaaS Analytics Dashboard",
+    summary: "Real-time analytics with multi-tenant support and role-based access control.",
     description:
-      "Node.js / Express API for a task manager. Features JWT auth, BullMQ job queues, Socket.io events, Redis caching, and Swagger / OpenAPI docs.",
-    category: "MERN",
-    stack: ["Node.js", "Express", "MongoDB", "Redis", "Socket.io", "BullMQ"],
-    imageUrl: "/projects/api.png",
-    repoUrl: "https://github.com/FarrukhHGithub",
+      "Multi-tenant SaaS dashboard built with Next.js App Router, Prisma, and PostgreSQL. Features JWT auth, RBAC, and live chart updates.",
+    category: "Next.js",
+    stack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Chart.js"],
     featured: false,
-    role: "Backend Developer",
-    result: "Handles 500 req/s at p99 < 50 ms.",
+    role: "Lead Developer",
+    result: "Cut client reporting time by 70%.",
+    liveUrl: "https://example.com",
+    repoUrl: "https://github.com/FarrukhHGithub",
   },
   {
     id: "p5",
-    title: "Learning Management System",
-    summary: "Course platform with video streaming, quizzes, and progress tracking.",
+    slug: "task-management-api",
+    title: "Task Management REST API",
+    summary: "High-throughput RESTful API with BullMQ job queues, Redis caching, and Swagger docs.",
     description:
-      "Full-stack LMS with course builder, S3 video upload + CloudFront streaming, quiz engine, progress tracking, and Stripe subscriptions.",
-    category: "Full-Stack",
-    stack: ["React", "Node.js", "MongoDB", "AWS S3", "CloudFront", "Stripe"],
-    imageUrl: "/projects/lms.png",
-    liveUrl: "https://example.com",
-    repoUrl: "https://github.com/FarrukhHGithub",
+      "Node.js / Express API featuring JWT auth, BullMQ queues, Socket.io events, Redis caching, and OpenAPI specifications.",
+    category: "MERN",
+    stack: ["Node.js", "Express", "MongoDB", "Redis", "BullMQ"],
     featured: false,
-    role: "Full-Stack Developer",
-    result: "200 + enrolled students at launch.",
+    role: "Backend Developer",
+    result: "Handles 500 req/s at p99 < 50ms.",
+    repoUrl: "https://github.com/FarrukhHGithub",
   },
   {
     id: "p6",
+    slug: "invoice-billing-saas",
     title: "Invoice & Billing SaaS",
-    summary: "Generate, send, and track invoices with PDF export and reminders.",
+    summary: "Generate, send, and track invoices with automated reminders and PDF export.",
     description:
-      "Invoice SaaS with PDF generation via Puppeteer, automated email reminders (Nodemailer), multi-currency support, and a clean revenue dashboard.",
+      "Invoicing system with automated reminders via Nodemailer, multi-currency support, and revenue tracking.",
     category: "Full-Stack",
     stack: ["Next.js", "Prisma", "PostgreSQL", "Puppeteer", "Nodemailer"],
-    imageUrl: "/projects/invoice.png",
+    featured: false,
+    role: "Solo Developer",
+    result: "Actively used by 3 small business clients.",
     liveUrl: "https://example.com",
     repoUrl: "https://github.com/FarrukhHGithub",
-    featured: false,
-    role: "Solo Developer",
-    result: "Used by 3 small businesses.",
-  },
-  {
-    id: "p7",
-    title: "Social Media Scheduler",
-    summary: "Schedule posts to multiple platforms from one dashboard.",
-    description:
-      "MERN app integrating with Twitter, LinkedIn, and Facebook APIs to schedule and auto-publish posts. Background jobs via BullMQ with cron-style scheduling.",
-    category: "MERN",
-    stack: ["React", "Node.js", "MongoDB", "BullMQ", "Twitter API"],
-    imageUrl: "/projects/scheduler.png",
-    repoUrl: "https://github.com/FarrukhHGithub",
-    featured: false,
-    role: "Solo Developer",
-  },
-  {
-    id: "p8",
-    title: "Headless CMS Blog",
-    summary: "MDX-powered blog with full-text search, tags, and RSS feed.",
-    description:
-      "Next.js 14 blog using MDX for content, full-text search with Fuse.js, tag filtering, dark mode, RSS feed, sitemap. Lighthouse 100/100.",
-    category: "Next.js",
-    stack: ["Next.js", "MDX", "TypeScript", "Tailwind CSS", "Fuse.js"],
-    imageUrl: "/projects/blog.png",
-    liveUrl: "https://example.com",
-    repoUrl: "https://github.com/FarrukhHGithub",
-    featured: false,
-    role: "Solo Developer",
-    result: "Lighthouse 100 / 100.",
   },
 ];
 
-// ── Experience ────────────────────────────────────────────────
-export interface Experience {
-  role: string;
-  company: string;
-  period: string;
-  location: string;
-  bullets: string[];
-  tech: string[];
-}
-
-export const experience: Experience[] = [
-  {
-    role: "Full-Stack Developer",
-    company: "Your Current Company",
-    period: "Jan 2024 — Present",
-    location: "Remote",
-    bullets: [
-      "Architected and shipped a Next.js 14 SaaS dashboard used by 30+ clients.",
-      "Migrated a legacy monolith to microservices on AWS EC2, cutting infra cost by 35%.",
-      "Set up CI/CD with GitHub Actions, Nginx reverse proxy, PM2 clustering, and Certbot SSL.",
-      "Mentored two junior devs; led code review and architecture discussions.",
-    ],
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "AWS", "Nginx"],
-  },
-  {
-    role: "Web Developer",
-    company: "Previous Company / Freelance",
-    period: "Jun 2022 — Dec 2023",
-    location: "Hybrid",
-    bullets: [
-      "Delivered 6 client projects (MERN stack) on schedule and within budget.",
-      "Built REST APIs consumed by mobile apps — 99.9% uptime over 12 months.",
-      "Deployed all projects on Hostinger VPS with Nginx, PM2, and auto-renewing SSL.",
-      "Integrated Stripe, PayPal, and SMS gateways for payment flows.",
-    ],
-    tech: ["React", "Node.js", "MongoDB", "Express", "Hostinger VPS"],
-  },
+// ── About Content ─────────────────────────────────────────────
+export const aboutBio = [
+  "Full-stack developer with 2+ years of experience building complete web applications with the MERN stack and Next.js, with particular strength in backend development: secure REST APIs, authentication, database design and admin systems.",
+  "Started at Netbots SMC Private Limited delivering production healthcare, museum and tour company websites end to end, and currently working as an independent freelance developer delivering client applications from specification to production.",
+  "Engineering philosophy: clean MVC / modular architecture, robust input validation, centralized error handling, and fast, accessible interfaces designed for real-world reliability.",
 ];
 
-// ── Services ──────────────────────────────────────────────────
-export interface Service {
-  title: string;
-  description: string;
-  bullets: string[];
-}
-
-export const services: Service[] = [
-  {
-    title: "Web Application Development",
-    description: "End-to-end web apps from idea to production.",
-    bullets: [
-      "MERN stack & Next.js 14 (App Router)",
-      "REST & GraphQL APIs",
-      "Real-time features (WebSockets, SSE)",
-      "Admin dashboards & CMS",
-    ],
-  },
-  {
-    title: "Cloud & VPS Deployment",
-    description: "I get your app live, secure, and fast.",
-    bullets: [
-      "AWS (EC2, S3, CloudFront, Route 53)",
-      "Hostinger VPS — Nginx + PM2 + SSL",
-      "Domain setup & DNS management",
-      "Zero-downtime deployments",
-    ],
-  },
-  {
-    title: "Performance Optimisation",
-    description: "Make existing apps faster and cheaper to run.",
-    bullets: [
-      "Core Web Vitals & Lighthouse audit",
-      "Database query optimisation",
-      "CDN & caching strategies",
-      "Bundle size reduction",
-    ],
-  },
-  {
-    title: "API Development & Integration",
-    description: "Clean, documented, production-grade APIs.",
-    bullets: [
-      "RESTful API design (OpenAPI / Swagger)",
-      "Third-party integrations (Stripe, Twilio, etc.)",
-      "Authentication (JWT, OAuth 2.0)",
-      "Rate limiting & security hardening",
-    ],
-  },
-];
-
-// ── Testimonials ──────────────────────────────────────────────
-export interface Testimonial {
-  name: string;
-  role: string;
-  company: string;
-  text: string;
-}
-
-export const testimonials: Testimonial[] = [
-  {
-    name: "Alex Johnson",
-    role: "Product Manager",
-    company: "TechStartup Inc.",
-    text: "Farrukh delivered the dashboard two weeks ahead of schedule. The code quality was exceptional and deployment was smooth. Highly recommended.",
-  },
-  {
-    name: "Sarah Williams",
-    role: "Founder",
-    company: "GrowthHQ",
-    text: "Finally a developer who handles both the code AND the server. No DevOps handoff needed — he just ships it. Will absolutely work with again.",
-  },
-  {
-    name: "Michael Chen",
-    role: "CTO",
-    company: "DataFlow Labs",
-    text: "Farrukh turned a slow legacy app into a snappy Next.js product in 6 weeks. The Lighthouse score went from 44 to 97.",
-  },
-];
-
-// ── Stats ─────────────────────────────────────────────────────
-export const stats = [
-  { value: "2+", label: "Years building" },
-  { value: "8+", label: "Projects shipped" },
-  { value: "99.9%", label: "Avg uptime" },
-  { value: "AWS", label: "EC2 · S3 · CF · R53" },
-];
-
-// ── Tech stack marquee items ───────────────────────────────────
-export const techStack = [
-  "React", "Next.js", "TypeScript", "Node.js", "Express",
-  "MongoDB", "PostgreSQL", "Prisma", "Redis", "AWS EC2",
-  "AWS S3", "CloudFront", "Hostinger VPS", "Nginx", "PM2", "Docker",
-  "Tailwind CSS", "AI Coding", "Framer Motion", "Zod", "JWT", "Stripe",
+export const heroStats = [
+  { value: "2+", label: "Years Experience" },
+  { value: "6+", label: "Production Projects" },
+  { value: "Backend", label: "Core Strength" },
 ];
 
 // ── Certificates ──────────────────────────────────────────────

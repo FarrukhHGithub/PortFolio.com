@@ -1,23 +1,22 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Container, ThemeToggle, Button } from "@/components/ui/shared";
 import styles from "@/components/UIstyle/portfolio/navbar.module.css";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#certificates", label: "Certifications" },
-  { href: "#projects", label: "Projects" },
+  { href: "#hero", label: "Home" },
   { href: "#experience", label: "Experience" },
+  { href: "#skills", label: "Skills" },
+  { href: "/projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
 
 export function Navbar({ initials = "FH" }: { initials?: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -29,21 +28,22 @@ export function Navbar({ initials = "FH" }: { initials?: string }) {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <Container>
         <div className={styles.inner}>
-          <a href="#" className={styles.brand} aria-label="Home">
+          <a href="#hero" className={styles.brand} aria-label="Home">
             <span>{initials}</span>
           </a>
 
           <nav className={styles.nav} aria-label="Main Navigation">
-            {navLinks.map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-                className={`${styles.link} ${active === href ? styles.active : ""}`}
-                onClick={() => setActive(href)}
-              >
-                {label}
-              </a>
-            ))}
+            {navLinks.map(({ href, label }) =>
+              href.startsWith("/") ? (
+                <Link key={href} href={href} className={styles.link}>
+                  {label}
+                </Link>
+              ) : (
+                <a key={href} href={href} className={styles.link}>
+                  {label}
+                </a>
+              )
+            )}
           </nav>
 
           <div className={styles.actions}>
@@ -52,6 +52,7 @@ export function Navbar({ initials = "FH" }: { initials?: string }) {
               Let&apos;s talk
             </Button>
             <button
+              type="button"
               className={styles.mobileMenuBtn}
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle navigation menu"
@@ -65,19 +66,27 @@ export function Navbar({ initials = "FH" }: { initials?: string }) {
 
       {menuOpen && (
         <div className={styles.mobileDrawer}>
-          {navLinks.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              className={styles.link}
-              onClick={() => {
-                setActive(href);
-                setMenuOpen(false);
-              }}
-            >
-              {label}
-            </a>
-          ))}
+          {navLinks.map(({ href, label }) =>
+            href.startsWith("/") ? (
+              <Link
+                key={href}
+                href={href}
+                className={styles.link}
+                onClick={() => setMenuOpen(false)}
+              >
+                {label}
+              </Link>
+            ) : (
+              <a
+                key={href}
+                href={href}
+                className={styles.link}
+                onClick={() => setMenuOpen(false)}
+              >
+                {label}
+              </a>
+            )
+          )}
         </div>
       )}
     </header>

@@ -1,47 +1,46 @@
 import React from "react";
-import { Server, Cloud, Cpu, ShieldCheck } from "lucide-react";
+import { Server, Cloud, Cpu } from "lucide-react";
 import { Container, SectionHeader, Card } from "@/components/ui/shared";
+import { aboutBio as defaultBio } from "@/data/portfolio";
 import styles from "@/components/UIstyle/portfolio/about.module.css";
 
 const highlights = [
   {
     icon: Server,
-    title: "Full-Stack Ownership",
-    text: "Building robust TypeScript backends, Express APIs, and scalable Next.js interfaces with clean architecture.",
+    title: "Backend Core Strength",
+    text: "Building robust TypeScript backends, Express APIs, JWT security, and scalable MongoDB/PostgreSQL schemas.",
   },
   {
     icon: Cloud,
     title: "Production Infrastructure",
-    text: "Configuring VPS hosts, AWS EC2, S3, CloudFront, Nginx reverse proxies, and automated SSL renewals.",
+    text: "Deploying production apps on Hostinger VPS and AWS EC2 with Nginx reverse proxy, PM2 clustering, and SSL.",
   },
   {
     icon: Cpu,
     title: "Performance & DX",
-    text: "Zero-bloat engineering focused on fast Core Web Vitals, server components, and responsive experiences.",
+    text: "High Core Web Vitals, server components, and responsive Next.js interfaces designed for real users.",
   },
 ];
 
-export function About({ name = "Farrukh Hussain" }: { name?: string }) {
+interface AboutProps {
+  bio?: string[];
+}
+
+export function About({ bio = defaultBio }: AboutProps) {
   return (
     <section className={styles.section} id="about">
       <Container>
         <SectionHeader
           label="About"
           title="Engineered for reliability & scale."
-          description="Bridging modern front-end design with resilient backend and cloud infrastructure."
+          description="Bridging modern front-end design with resilient backend systems and production deployments."
         />
 
         <div className={styles.grid}>
           <div className={styles.bio}>
-            <p>
-              I am a <strong>Full-Stack Developer</strong> specializing in the MERN stack and Next.js. Over the last 2+ years, I have architected and deployed production-grade applications that solve real-world problems.
-            </p>
-            <p>
-              Rather than stopping at local development, I own the entire lifecycle: from database schemas and authentication to reverse proxies, containerization, and AWS cloud hosting.
-            </p>
-            <p>
-              My design approach centers on simplicity, clarity, and performance. Every interface is built to load instantly, feel responsive, and respect accessibility standards.
-            </p>
+            {bio.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
 
           <div className={styles.cardsCol}>
