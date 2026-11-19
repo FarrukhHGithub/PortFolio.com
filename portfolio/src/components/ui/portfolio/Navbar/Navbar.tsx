@@ -31,9 +31,9 @@ export function Navbar({ initials }: NavbarProps) {
                 href="#projects"
                 className={styles.link}
                 style={{
-                  fontSize: "1rem",
+                  fontSize: "clamp(0.8125rem, 2.5vw, 0.9375rem)",
                   fontWeight: 600,
-                  letterSpacing: "-0.01em",
+                  whiteSpace: "nowrap",
                 }}
               >
                 Projects
@@ -43,12 +43,38 @@ export function Navbar({ initials }: NavbarProps) {
                 href="/#projects"
                 className={styles.link}
                 style={{
-                  fontSize: "1rem",
+                  fontSize: "clamp(0.8125rem, 2.5vw, 0.9375rem)",
                   fontWeight: 600,
-                  letterSpacing: "-0.01em",
+                  whiteSpace: "nowrap",
                 }}
               >
                 Projects
+              </Link>
+            )}
+
+            {isHome ? (
+              <a
+                href="#certificates"
+                className={styles.link}
+                style={{
+                  fontSize: "clamp(0.8125rem, 2.5vw, 0.9375rem)",
+                  fontWeight: 600,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Certificates &amp; Qualifications
+              </a>
+            ) : (
+              <Link
+                href="/certificates"
+                className={styles.link}
+                style={{
+                  fontSize: "clamp(0.8125rem, 2.5vw, 0.9375rem)",
+                  fontWeight: 600,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Certificates &amp; Qualifications
               </Link>
             )}
           </nav>

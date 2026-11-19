@@ -473,5 +473,396 @@ export const projects: Project[] = [
     liveUrl: "#",
     githubUrl: "#",
   },
+  {
+    slug: "adventure-trekking-tours",
+    title: "Adventure & Trekking Expeditions Platform",
+    category: "Tour",
+    client: "Freelance",
+    status: "completed",
+    duration: "TODO",
+    shortDescription:
+      "Full-stack mountain trekking and adventure tour booking platform with interactive routes, booking inquiries, and Vercel edge deployment.",
+    overview:
+      "An adventure tourism web application engineered for mountain expeditions and safari packages, offering interactive altitude profiles, day-by-day trail maps, equipment checklists, and instant customer booking inquiry management, deployed on Vercel.",
+    problem:
+      "Adventure travelers required detailed trail difficulty ratings, gear prerequisites, and altitude timelines before booking, which offline channels could not adequately deliver.",
+    myRole:
+      "Freelance Full-Stack Developer — built the Express REST backend, modeled MongoDB schemas for routes and gear catalogs, designed the responsive Next.js front end, and deployed the full system on Vercel.",
+    features: [
+      "Interactive multi-day trekking packages with elevation profiles and difficulty badges",
+      "Gear checklist and seasonal equipment recommendation system",
+      "Customer booking inquiry and group reservation request pipeline",
+      "Protected administrator dashboard for updating departures and expedition rosters",
+      "Real-time email alerts and schema-validated submissions",
+    ],
+    techStack: {
+      backend: ["Node.js", "Express.js", "REST APIs", "JWT Auth", "Validation"],
+      database: ["MongoDB", "Mongoose ODM", "Index Optimization"],
+      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS"],
+      tools: ["Vercel", "Git", "GitHub", "Postman", "CI/CD"],
+    },
+    architecture:
+      "Decoupled cloud architecture running Next.js App Router on Vercel's global edge network, interfaced with an Express REST API service and MongoDB Atlas database cluster.",
+    apiHighlights: [
+      {
+        method: "GET",
+        route: "/api/expeditions",
+        purpose: "List all active adventure expeditions with difficulty and elevation filters",
+      },
+      {
+        method: "GET",
+        route: "/api/expeditions/:slug",
+        purpose: "Retrieve expedition itinerary, trail elevation points, and gear guide",
+      },
+      {
+        method: "POST",
+        route: "/api/expeditions/inquiries",
+        purpose: "Submit adventure booking inquiries with group size validation",
+      },
+      {
+        method: "POST",
+        route: "/api/admin/auth/login",
+        purpose: "Authenticate expedition operators and issue signed JWT credentials",
+      },
+      {
+        method: "GET",
+        route: "/api/admin/inquiries",
+        purpose: "Manage expedition applicant rosters and departure assignments",
+      },
+    ],
+    databaseModels: [
+      {
+        name: "Expedition",
+        keyFields: ["title", "slug", "maxAltitude", "difficulty", "itineraryDays", "gearList", "price", "isActive"],
+      },
+      {
+        name: "ExpeditionInquiry",
+        keyFields: ["travelerName", "email", "phone", "expeditionId", "groupSize", "startDate", "status"],
+      },
+      {
+        name: "OperatorUser",
+        keyFields: ["name", "email", "passwordHash", "role", "createdAt"],
+      },
+    ],
+    security: [
+      "JWT authorization middleware securing operator dashboard actions",
+      "Strict data sanitization on passenger health and equipment questionnaires",
+      "Environment variable isolation on Vercel deployment infrastructure",
+      "Global edge rate limiting on public inquiry submission routes",
+    ],
+    challenges: [
+      {
+        challenge: "Rendering dense daily elevation profiles and trail maps without hurting mobile Core Web Vitals.",
+        solution: "Utilized Next.js server components with static rendering and SVG path vector charts to achieve instant visual loading with zero client JS overhead.",
+      },
+      {
+        challenge: "Managing international bookings with unpredictable departure schedules.",
+        solution: "Engineered dynamic departure date slots in MongoDB with status flags that automatically close bookings when slots reach capacity.",
+      },
+    ],
+    deployment: "Deployed to production on Vercel with automatic continuous integration, global edge caching, and serverless API route scaling.",
+    results: [
+      "Successfully deployed on Vercel with global sub-second initial page load times.",
+      "Eliminated manual inquiry processing by automating lead capture and notifications.",
+      "Enabled non-technical operator staff to schedule and update seasonal expeditions in real time.",
+    ],
+    screenshots: [],
+    liveUrl: "#",
+    githubUrl: "#",
+  },
+  {
+    slug: "heritage-cultural-tours",
+    title: "Heritage & Cultural Travel Platform",
+    category: "Tour",
+    client: "Freelance",
+    status: "completed",
+    duration: "TODO",
+    shortDescription:
+      "Full-stack cultural heritage tourism platform featuring historical itineraries, guided tour bookings, and automated Vercel deployment.",
+    overview:
+      "A production travel web platform dedicated to cultural heritage and architectural tourism, presenting guided cultural excursions, historical site timelines, localized tour guides, and customer inquiry management, deployed to production on Vercel.",
+    problem:
+      "The cultural travel agency relied on physical brochures and manual phone inquiries, causing delays in processing international bookings and custom itinerary requests.",
+    myRole:
+      "Freelance Full-Stack Developer — architected the Express REST backend and MongoDB data collections, built the multilingual-ready Next.js client interface, and deployed the production system on Vercel.",
+    features: [
+      "Historical site catalogs with interactive day-by-day cultural itineraries",
+      "Localized guide profiles and language-preference selection for tours",
+      "Direct customer booking inquiry and custom group request portal",
+      "Secure administrative portal for scheduling departures and reviewing leads",
+      "Input sanitization and email notification integration",
+    ],
+    techStack: {
+      backend: ["Node.js", "Express.js", "REST APIs", "Nodemailer", "JWT Auth"],
+      database: ["MongoDB", "Mongoose ODM", "Aggregation Pipelines"],
+      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS"],
+      tools: ["Vercel", "Git", "GitHub", "Postman", "Linux"],
+    },
+    architecture:
+      "Decoupled MVC architecture pairing a Node.js/Express backend with a responsive Next.js front end hosted on Vercel with automated preview pipelines.",
+    apiHighlights: [
+      {
+        method: "GET",
+        route: "/api/heritage-tours",
+        purpose: "Fetch all cultural excursions with historical era and region filters",
+      },
+      {
+        method: "GET",
+        route: "/api/heritage-tours/:id",
+        purpose: "Retrieve cultural timeline, site highlights, and guide credentials",
+      },
+      {
+        method: "POST",
+        route: "/api/cultural-inquiries",
+        purpose: "Submit customized heritage tour inquiries with group requirements",
+      },
+      {
+        method: "POST",
+        route: "/api/admin/login",
+        purpose: "Authenticate cultural agency administrators with JWT tokens",
+      },
+      {
+        method: "GET",
+        route: "/api/admin/cultural-inquiries",
+        purpose: "Review incoming inquiries, assign guides, and update status",
+      },
+    ],
+    databaseModels: [
+      {
+        name: "HeritageTour",
+        keyFields: ["title", "slug", "era", "region", "durationDays", "sitesIncluded", "guideId", "isAvailable"],
+      },
+      {
+        name: "TourGuide",
+        keyFields: ["name", "languages", "specialization", "credentials", "bio", "rating"],
+      },
+      {
+        name: "CulturalInquiry",
+        keyFields: ["contactPerson", "email", "phone", "tourId", "languagePreferred", "targetDates", "status"],
+      },
+    ],
+    security: [
+      "Role-based administrative authentication guarding guide and itinerary mutations",
+      "Email and phone format sanitization middleware preventing malicious inputs",
+      "Encrypted transmission over HTTPS enforced via Vercel edge configuration",
+      "CORS restriction limiting external script access",
+    ],
+    challenges: [
+      {
+        challenge: "Organizing deep historical narratives alongside booking interactions without overwhelming users.",
+        solution: "Structured modular tabbed views separating historical context from itinerary schedules, improving readability on mobile devices.",
+      },
+      {
+        challenge: "Ensuring high uptime during peak seasonal travel campaigns.",
+        solution: "Deployed the Next.js application to Vercel with serverless scaling and edge caching for static cultural assets.",
+      },
+    ],
+    deployment: "Deployed to production on Vercel with custom SSL domain integration and edge network asset optimization.",
+    results: [
+      "Successfully launched on Vercel with seamless automated continuous delivery.",
+      "Cut customer inquiry response turnaround through automated email confirmations.",
+      "Organized multi-region cultural itineraries into an intuitive digital catalog.",
+    ],
+    screenshots: [],
+    liveUrl: "#",
+    githubUrl: "#",
+  },
+  {
+    slug: "coastal-marine-expeditions",
+    title: "Coastal & Marine Expeditions Platform",
+    category: "Tour",
+    client: "Freelance",
+    status: "completed",
+    duration: "TODO",
+    shortDescription:
+      "Full-stack marine eco-tour and coastal excursion platform with tidal schedule integration, booking reservations, and Vercel hosting.",
+    overview:
+      "A comprehensive coastal and marine tour platform facilitating boat excursions, diving expeditions, and marine wildlife tours with dynamic tide-aware itinerary scheduling and administrative reservation management, deployed to production on Vercel.",
+    problem:
+      "Marine tour departures are highly weather and tide-dependent, requiring real-time schedule updates and immediate client communication that static sites could not provide.",
+    myRole:
+      "Freelance Full-Stack Developer — engineered the backend API endpoints and MongoDB data structure, integrated schedule update middleware, created the responsive Next.js UI, and deployed the application to Vercel.",
+    features: [
+      "Tide-aware excursion schedules with real-time departure status indicators",
+      "Vessel specifications, safety guidelines, and diver certification checklists",
+      "Fast customer booking request flow with passenger headcount validation",
+      "Protected management dashboard for marine operators to adjust departures on short notice",
+      "Automated confirmation and booking alert dispatch via email",
+    ],
+    techStack: {
+      backend: ["Node.js", "Express.js", "REST APIs", "JWT Auth", "Validation"],
+      database: ["MongoDB", "Mongoose ODM", "TTL Indexes"],
+      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS"],
+      tools: ["Vercel", "Git", "GitHub", "Postman"],
+    },
+    architecture:
+      "High-availability web application running Next.js on Vercel connected to a RESTful API service and managed MongoDB database.",
+    apiHighlights: [
+      {
+        method: "GET",
+        route: "/api/marine-tours",
+        purpose: "List active boat and diving excursions with tidal schedule status",
+      },
+      {
+        method: "GET",
+        route: "/api/marine-tours/:id",
+        purpose: "Retrieve vessel details, safety rules, and tide departure windows",
+      },
+      {
+        method: "POST",
+        route: "/api/marine-tours/book",
+        purpose: "Process coastal expedition reservations with headcount validation",
+      },
+      {
+        method: "POST",
+        route: "/api/admin/marine/auth",
+        purpose: "Authenticate marina operators with secure session tokens",
+      },
+      {
+        method: "PATCH",
+        route: "/api/admin/marine/status",
+        purpose: "Broadcast weather or tide-related schedule delays to active bookings",
+      },
+    ],
+    databaseModels: [
+      {
+        name: "MarineExcursion",
+        keyFields: ["title", "slug", "vesselName", "capacity", "tideWindow", "diverCertificationRequired", "price"],
+      },
+      {
+        name: "MarineBooking",
+        keyFields: ["customerName", "email", "phone", "excursionId", "passengerCount", "targetDate", "status"],
+      },
+      {
+        name: "MarinaStaff",
+        keyFields: ["name", "email", "passwordHash", "role", "lastLogin"],
+      },
+    ],
+    security: [
+      "JWT-based role authentication for all departure update endpoints",
+      "Input validation on diver certification IDs and passenger headcounts",
+      "Automated SSL certificates and security headers provisioned on Vercel",
+      "Payload sanitization preventing MongoDB query injection",
+    ],
+    challenges: [
+      {
+        challenge: "Handling sudden departure cancellations caused by marine weather changes without creating booking confusion.",
+        solution: "Built a centralized alert middleware that flags delayed excursions in the database and triggers email alerts to affected passengers immediately.",
+      },
+      {
+        challenge: "Ensuring mobile booking forms submit reliably on low-bandwidth marina cellular networks.",
+        solution: "Streamlined request payloads and implemented optimistic UI updates with resilient retry handling in the Next.js client.",
+      },
+    ],
+    deployment: "Deployed to production on Vercel with instant git-backed deployments, zero-downtime rollouts, and edge CDN delivery.",
+    results: [
+      "Successfully launched on Vercel with global CDN caching and high availability.",
+      "Automated passenger booking coordination for marine excursions.",
+      "Provided operators with real-time schedule management for tide-dependent departures.",
+    ],
+    screenshots: [],
+    liveUrl: "#",
+    githubUrl: "#",
+  },
+  {
+    slug: "contemporary-art-museum",
+    title: "Contemporary Art & Sculpture Museum",
+    category: "Museum",
+    client: "Freelance",
+    status: "completed",
+    duration: "TODO",
+    shortDescription:
+      "Content-managed modern art museum platform with digital exhibitions, artist retrospectives, image uploads, and Vercel deployment.",
+    overview:
+      "A modern digital gallery and museum portal engineered to showcase contemporary fine art, sculpture exhibits, artist bios, and live opening events, featuring an intuitive administrative portal and fast Vercel edge delivery.",
+    problem:
+      "The gallery had frequent bi-weekly exhibit rotations and needed a high-performance, visually rich digital catalog that gallery curators could update without technical assistance.",
+    myRole:
+      "Freelance Full-Stack Developer — built the content-managed REST API for exhibits, artist profiles, and events with Multer image upload processing, engineered the Next.js client interface with optimized image loading, and deployed on Vercel.",
+    features: [
+      "High-resolution virtual exhibition rooms and sculpture gallery showcases",
+      "Curated artist biographies linked with active and archived collections",
+      "Exhibition opening event schedule with RSVP enquiry capabilities",
+      "Multipart asset upload pipeline with automated thumbnail generation",
+      "Protected curator admin panel for updating art pieces and featured collections",
+    ],
+    techStack: {
+      backend: ["Node.js", "Express.js", "Multer", "JWT Auth", "REST APIs"],
+      database: ["MongoDB", "Mongoose ODM", "Cursor Pagination"],
+      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS"],
+      tools: ["Vercel", "Git", "GitHub", "Postman"],
+    },
+    architecture:
+      "Modern headless CMS pattern pairing an Express REST API with Next.js App Router deployed on Vercel with incremental static regeneration and edge asset distribution.",
+    apiHighlights: [
+      {
+        method: "GET",
+        route: "/api/art-exhibits",
+        purpose: "Fetch curated artwork collections with medium and curator filters",
+      },
+      {
+        method: "GET",
+        route: "/api/artists",
+        purpose: "List featured contemporary artists and their active exhibition pieces",
+      },
+      {
+        method: "POST",
+        route: "/api/events/rsvp",
+        purpose: "Process opening reception RSVP enquiries with guest validation",
+      },
+      {
+        method: "POST",
+        route: "/api/curator/artworks",
+        purpose: "Protected endpoint with Multer for uploading artwork photos and metadata",
+      },
+      {
+        method: "PUT",
+        route: "/api/curator/artworks/:id",
+        purpose: "Update exhibit rotation status and gallery placement",
+      },
+    ],
+    databaseModels: [
+      {
+        name: "Artwork",
+        keyFields: ["title", "artistName", "medium", "dimensions", "year", "images", "exhibitRoom", "isFeatured"],
+      },
+      {
+        name: "Artist",
+        keyFields: ["name", "bio", "statement", "portraitUrl", "artworksCount", "website"],
+      },
+      {
+        name: "GalleryEvent",
+        keyFields: ["title", "openingDate", "time", "curatorNotes", "rsvpCapacity", "isPublished"],
+      },
+      {
+        name: "CuratorUser",
+        keyFields: ["name", "email", "passwordHash", "role", "createdAt"],
+      },
+    ],
+    security: [
+      "JWT authentication restricting curator publishing permissions",
+      "Strict MIME-type validation filtering image uploads to verified formats (WebP, PNG, JPEG)",
+      "Vercel DDoS and edge protection shielding public gallery traffic",
+      "Input sanitization on artist statements and artwork descriptions",
+    ],
+    challenges: [
+      {
+        challenge: "Displaying high-resolution artwork galleries smoothly across mobile devices without bandwidth bottlenecks.",
+        solution: "Implemented Next.js responsive image formats and Vercel Image Optimization with lazy loading to serve right-sized WebP assets to each viewport.",
+      },
+      {
+        challenge: "Empowering curators with non-technical backgrounds to reorganize exhibit rooms.",
+        solution: "Built a drag-and-order priority index in the curator admin panel that updates MongoDB sort orders atomically.",
+      },
+    ],
+    deployment: "Deployed to production on Vercel with automatic ISR caching, global CDN delivery for gallery imagery, and custom domain SSL.",
+    results: [
+      "Successfully launched on Vercel with edge-cached art galleries.",
+      "Enabled gallery staff to rotate exhibitions and add artwork photos in minutes.",
+      "Achieved high Core Web Vitals on image-intensive modern art catalogs.",
+    ],
+    screenshots: [],
+    liveUrl: "#",
+    githubUrl: "#",
+  },
 ];
-
