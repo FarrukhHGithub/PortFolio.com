@@ -5,6 +5,7 @@ export { Skills } from "./Skills/Skills";
 export { Projects } from "./Projects/Projects";
 export { ProjectCard } from "./Projects/ProjectCard";
 export { ProjectFilter } from "./Projects/ProjectFilter";
+export { ProjectsCatalog } from "./Projects/ProjectsCatalog";
 export { Experience } from "./Experience/Experience";
 export { Certificates } from "./Certificates/Certificates";
 export { Contact } from "./Contact/Contact";
