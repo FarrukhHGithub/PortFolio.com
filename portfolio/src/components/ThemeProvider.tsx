@@ -1,13 +1,18 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "dark" | "light";
 
-const ThemeContext = createContext<{
+interface ThemeContextType {
   theme: Theme;
   toggle: () => void;
-}>({ theme: "dark", toggle: () => {} });
+}
+
+const ThemeContext = createContext<ThemeContextType>({
+  theme: "dark",
+  toggle: () => {},
+});
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
@@ -18,7 +23,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
-    setTheme(stored ?? preferred);
+    const initialTheme = stored ?? preferred;
+    setTheme(initialTheme);
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(initialTheme);
     setMounted(true);
   }, []);
 
@@ -30,12 +38,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [theme, mounted]);
 
   const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
-
-  if (!mounted) {
-    return (
-      <div style={{ visibility: "hidden" }}>{children}</div>
-    );
-  }
 
   return (
     <ThemeContext.Provider value={{ theme, toggle }}>
