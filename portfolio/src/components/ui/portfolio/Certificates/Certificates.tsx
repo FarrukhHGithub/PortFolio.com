@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2, ExternalLink, Award } from "lucide-react";
+import Link from "next/link";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import { Container, SectionHeader, Card } from "@/components/ui/shared";
 import { Certificate, certificates as defaultCertificates } from "@/data/portfolio";
 import styles from "@/components/UIstyle/portfolio/certificates.module.css";
