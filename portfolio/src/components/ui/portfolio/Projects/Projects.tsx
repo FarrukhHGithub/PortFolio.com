@@ -1,8 +1,8 @@
 import React from "react";
-import Link from "next/link";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import { Container, SectionHeader, Card, Button } from "@/components/ui/shared";
-import { Project, projects as defaultProjects } from "@/data/portfolio";
+import { ArrowRight } from "lucide-react";
+import { Container, SectionHeader, Button } from "@/components/ui/shared";
+import { Project, projects as defaultProjects } from "@/data/projects";
+import { ProjectCard } from "./ProjectCard";
 import styles from "@/components/UIstyle/portfolio/projects.module.css";
 
 interface ProjectsProps {
@@ -13,7 +13,7 @@ interface ProjectsProps {
 }
 
 export function Projects({
-  projects = defaultProjects.filter((p) => p.featured).slice(0, 3),
+  projects = defaultProjects.filter((p) => p.status === "completed").slice(0, 3),
   title = "Selected production projects.",
   description = "Production healthcare, museum, and tour company platforms built end to end.",
   showAllLink = true,
@@ -29,50 +29,7 @@ export function Projects({
 
         <div className={styles.grid}>
           {projects.map((project) => (
-            <Card key={project.id} className={styles.card} hoverable>
-              <h3 className={styles.title}>
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className={styles.titleLink}
-                >
-                  {project.title}
-                </Link>
-              </h3>
-
-              <p className={styles.summary}>{project.summary}</p>
-
-              <div className={styles.stackList}>
-                {project.stack.map((tech) => (
-                  <span key={tech} className={styles.stackTag}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className={styles.footer}>
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className={styles.detailsLink}
-                >
-                  <span>Case details</span>
-                  <ArrowRight size={13} />
-                </Link>
-
-                <div className={styles.externalLinks}>
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.link}
-                      aria-label={`Visit live site for ${project.title}`}
-                    >
-                      <ExternalLink size={14} />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </Card>
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
 
