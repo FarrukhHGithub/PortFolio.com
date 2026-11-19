@@ -42,11 +42,8 @@ export function Certificates({
 
         <div className={styles.filterBar} role="tablist" aria-label="Certificate category filters">
           {CATEGORIES.map((cat) => {
-            const count = cat === "All"
-              ? certificates.length
-              : certificates.filter((c) => c.category === cat).length;
-
-            if (count === 0 && cat !== "All") return null;
+            const hasCerts = cat === "All" || certificates.some((c) => c.category === cat);
+            if (!hasCerts) return null;
 
             return (
               <button
@@ -59,7 +56,7 @@ export function Certificates({
                 }`}
                 onClick={() => setActiveCategory(cat)}
               >
-                {cat} ({count})
+                {cat}
               </button>
             );
           })}

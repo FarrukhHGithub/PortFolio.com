@@ -7,14 +7,13 @@ export interface ProjectFilterProps {
   categories: ("All" | ProjectCategory)[];
   activeCategory: "All" | ProjectCategory;
   onSelectCategory: (cat: "All" | ProjectCategory) => void;
-  counts: Record<string, number>;
+  counts?: Record<string, number>;
 }
 
 export function ProjectFilter({
   categories,
   activeCategory,
   onSelectCategory,
-  counts,
 }: ProjectFilterProps) {
   return (
     <div
@@ -29,7 +28,6 @@ export function ProjectFilter({
     >
       {categories.map((category) => {
         const isActive = activeCategory === category;
-        const count = counts[category] ?? 0;
 
         return (
           <button
@@ -52,7 +50,7 @@ export function ProjectFilter({
                 : "1px solid var(--color-border)",
             }}
           >
-            {category} ({count})
+            {category}
           </button>
         );
       })}
