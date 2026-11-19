@@ -2,14 +2,17 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight, FileDown, Mail } from "lucide-react";
 import { Container, Button, Badge } from "@/components/ui/shared";
+import { heroStats } from "@/data/portfolio";
 import styles from "@/components/UIstyle/portfolio/hero.module.css";
 
 interface HeroProps {
   name: string;
-  tagline: string;
-  description: string;
+  title: string;
+  summary: string;
+  cvUrl?: string;
+  stats?: { value: string; label: string }[];
 }
 
 const fadeMotion = {
@@ -18,7 +21,13 @@ const fadeMotion = {
   transition: { duration: 0.35, ease: "easeOut" as const },
 };
 
-export function Hero({ name, tagline, description }: HeroProps) {
+export function Hero({
+  name,
+  title,
+  summary,
+  cvUrl = "/CV_FullstackDevelopers.pdf",
+  stats = heroStats,
+}: HeroProps) {
   return (
     <section className={styles.hero} id="hero">
       <Container>
@@ -34,7 +43,7 @@ export function Hero({ name, tagline, description }: HeroProps) {
             {...fadeMotion}
             transition={{ duration: 0.35, delay: 0.08 }}
           >
-            Hi, I&apos;m <span className={styles.headlineAccent}>{name}</span> — Full-Stack Developer &amp; Cloud Engineer.
+            Hi, I&apos;m <span className={styles.headlineAccent}>{name}</span> — {title}.
           </motion.h1>
 
           <motion.p
@@ -42,7 +51,7 @@ export function Hero({ name, tagline, description }: HeroProps) {
             {...fadeMotion}
             transition={{ duration: 0.35, delay: 0.16 }}
           >
-            {description}
+            {summary}
           </motion.p>
 
           <motion.div
@@ -50,11 +59,23 @@ export function Hero({ name, tagline, description }: HeroProps) {
             {...fadeMotion}
             transition={{ duration: 0.35, delay: 0.24 }}
           >
-            <Button variant="primary" size="lg" href="#contact">
-              Start a project <ArrowRight size={16} />
+            <Button variant="primary" size="lg" href="/projects">
+              <span>View Projects</span>
+              <ArrowRight size={16} />
             </Button>
-            <Button variant="secondary" size="lg" href="#projects">
-              View selected work
+            <Button
+              variant="secondary"
+              size="lg"
+              href={cvUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Download CV</span>
+              <FileDown size={16} />
+            </Button>
+            <Button variant="outline" size="lg" href="#contact">
+              <span>Contact Me</span>
+              <Mail size={16} />
             </Button>
           </motion.div>
 
@@ -63,18 +84,12 @@ export function Hero({ name, tagline, description }: HeroProps) {
             {...fadeMotion}
             transition={{ duration: 0.35, delay: 0.32 }}
           >
-            <div className={styles.factItem}>
-              <dt>2+</dt>
-              <dd>Years building web apps</dd>
-            </div>
-            <div className={styles.factItem}>
-              <dt>8+</dt>
-              <dd>Production projects shipped</dd>
-            </div>
-            <div className={styles.factItem}>
-              <dt>AWS &amp; VPS</dt>
-              <dd>Cloud infra &amp; deployments</dd>
-            </div>
+            {stats.map((fact) => (
+              <div key={fact.label} className={styles.factItem}>
+                <dt>{fact.value}</dt>
+                <dd>{fact.label}</dd>
+              </div>
+            ))}
           </motion.dl>
         </div>
       </Container>
