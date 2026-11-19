@@ -45,10 +45,7 @@ export function Breadcrumb({ items, className = "" }: BreadcrumbProps) {
                 style={{
                   color: "var(--color-ink-muted)",
                   textDecoration: "none",
-                  transition: "color 0.15s ease",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-brand)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-ink-muted)")}
               >
                 {item.label}
               </Link>
