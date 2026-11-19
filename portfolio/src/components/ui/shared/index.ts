@@ -14,3 +14,9 @@ export { SectionHeader } from "./SectionHeader/SectionHeader";
 export type { SectionHeaderProps } from "./SectionHeader/SectionHeader";
 
 export { ThemeToggle } from "./ThemeToggle/ThemeToggle";
+
+export { TechBadge } from "./TechBadge/TechBadge";
+export type { TechBadgeProps } from "./TechBadge/TechBadge";
+
+export { Breadcrumb } from "./Breadcrumb/Breadcrumb";
+export type { BreadcrumbProps, BreadcrumbItem } from "./Breadcrumb/Breadcrumb";
