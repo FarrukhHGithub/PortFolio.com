@@ -2,21 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { Container, ThemeToggle, Button } from "@/components/ui/shared";
+import { Container } from "@/components/ui/shared";
 import styles from "@/components/UIstyle/portfolio/navbar.module.css";
-
-const navLinks = [
-  { href: "#hero", label: "Home" },
-  { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
-  { href: "/projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
-];
 
 export function Navbar({ initials = "FH" }: { initials?: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -24,35 +19,36 @@ export function Navbar({ initials = "FH" }: { initials?: string }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const projectsHref = isHome ? "#projects" : "/projects";
+
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <Container>
         <div className={styles.inner}>
-          <a href="#hero" className={styles.brand} aria-label="Home">
+          <Link href="/" className={styles.brand} aria-label="Home">
             <span>{initials}</span>
-          </a>
+          </Link>
 
           <nav className={styles.nav} aria-label="Main Navigation">
-            {navLinks.map(({ href, label }) =>
-              href.startsWith("/") ? (
-                <Link key={href} href={href} className={styles.link}>
-                  {label}
-                </Link>
-              ) : (
-                <a key={href} href={href} className={styles.link}>
-                  {label}
-                </a>
-              )
+            {isHome ? (
+              <a href="#projects" className={styles.link}>
+                Projects
+              </a>
+            ) : (
+              <Link href="/projects" className={styles.link}>
+                Projects
+              </Link>
             )}
           </nav>
 
           <div className={styles.actions}>
-            <ThemeToggle />
-            <div className={styles.navCta}>
-              <Button variant="primary" size="sm" href="#contact">
-                Let&apos;s talk
-              </Button>
-            </div>
+            <Link
+              href="/projects"
+              className={styles.link}
+              style={{ fontWeight: 600, color: "var(--color-brand)" }}
+            >
+              All Projects &rarr;
+            </Link>
             <button
               type="button"
               className={styles.mobileMenuBtn}
@@ -68,27 +64,31 @@ export function Navbar({ initials = "FH" }: { initials?: string }) {
 
       {menuOpen && (
         <div className={styles.mobileDrawer}>
-          {navLinks.map(({ href, label }) =>
-            href.startsWith("/") ? (
-              <Link
-                key={href}
-                href={href}
-                className={styles.link}
-                onClick={() => setMenuOpen(false)}
-              >
-                {label}
-              </Link>
-            ) : (
-              <a
-                key={href}
-                href={href}
-                className={styles.link}
-                onClick={() => setMenuOpen(false)}
-              >
-                {label}
-              </a>
-            )
+          {isHome ? (
+            <a
+              href="#projects"
+              className={styles.link}
+              onClick={() => setMenuOpen(false)}
+            >
+              Projects
+            </a>
+          ) : (
+            <Link
+              href="/projects"
+              className={styles.link}
+              onClick={() => setMenuOpen(false)}
+            >
+              Projects
+            </Link>
           )}
+          <Link
+            href="/projects"
+            className={styles.link}
+            onClick={() => setMenuOpen(false)}
+            style={{ color: "var(--color-brand)", fontWeight: 600 }}
+          >
+            All Projects Archive
+          </Link>
         </div>
       )}
     </header>
