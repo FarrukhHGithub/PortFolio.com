@@ -56,6 +56,11 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.navCta {
+  display: flex;
 }
 
 .mobileMenuBtn {
@@ -83,5 +88,8 @@
   }
   .mobileMenuBtn {
     display: flex;
+  }
+  .navCta {
+    display: none;
   }
 }
