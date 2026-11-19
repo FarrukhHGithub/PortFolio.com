@@ -29,3 +29,4 @@ export function TechBadge({ name, size = "sm", className = "" }: TechBadgeProps)
     </span>
   );
 }
+

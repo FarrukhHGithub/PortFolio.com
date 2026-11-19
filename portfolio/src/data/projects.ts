@@ -474,3 +474,4 @@ export const projects: Project[] = [
     githubUrl: "#",
   },
 ];
+
