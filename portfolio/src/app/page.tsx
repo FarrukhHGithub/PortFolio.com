@@ -2,17 +2,20 @@ import { db } from "@/lib/db";
 import {
   siteConfig,
   projects as fallbackProjects,
-  skills as fallbackSkills,
+  skillCategories,
+  experience,
+  education,
   certificates as fallbackCertificates,
 } from "@/data/portfolio";
 import {
   Navbar,
   Hero,
   About,
-  Skills,
-  Certificates,
-  Projects,
   Experience,
+  Skills,
+  Projects,
+  Education,
+  Certificates,
   Contact,
   Footer,
 } from "@/components/ui/portfolio";
@@ -20,43 +23,27 @@ import {
 export const revalidate = 300;
 
 export default async function Home() {
-  let projectsList = fallbackProjects.map((p) => ({
-    id: p.id,
-    title: p.title,
-    summary: p.summary,
-    stack: p.stack,
-    liveUrl: p.liveUrl ?? null,
-    repoUrl: p.repoUrl ?? null,
-  }));
-
-  let skillsList: { name: string; category: string }[] = fallbackSkills.map((s) => ({
-    name: s.name,
-    category: s.category,
-  }));
+  let featuredProjects = fallbackProjects.filter((p) => p.featured).slice(0, 3);
 
   try {
     const dbProjects = await db.project.findMany({
-      where: { published: true },
+      where: { published: true, featured: true },
       orderBy: { sortOrder: "asc" },
+      take: 3,
     });
     if (dbProjects.length > 0) {
-      projectsList = dbProjects.map((p) => ({
+      featuredProjects = dbProjects.map((p) => ({
         id: p.id,
+        slug: p.slug,
         title: p.title,
         summary: p.summary,
+        description: p.summary,
+        category: "Full-Stack" as const,
         stack: p.stack,
-        liveUrl: p.liveUrl,
-        repoUrl: p.repoUrl,
-      }));
-    }
-
-    const dbSkills = await db.skill.findMany({
-      orderBy: { sortOrder: "asc" },
-    });
-    if (dbSkills.length > 0) {
-      skillsList = dbSkills.map((s) => ({
-        name: s.name,
-        category: s.category,
+        featured: p.featured,
+        role: "Full-Stack Developer",
+        liveUrl: p.liveUrl ?? undefined,
+        repoUrl: p.repoUrl ?? undefined,
       }));
     }
   } catch {
@@ -68,14 +55,16 @@ export default async function Home() {
       <Navbar initials={siteConfig.initials} />
       <Hero
         name={siteConfig.name}
-        tagline={siteConfig.tagline}
-        description={siteConfig.description}
+        title={siteConfig.title}
+        summary={siteConfig.summary}
+        cvUrl={siteConfig.cvUrl}
       />
-      <About name={siteConfig.name} />
-      <Skills skills={skillsList} />
+      <About />
+      <Experience items={experience} />
+      <Skills groups={skillCategories} />
+      <Projects projects={featuredProjects} showAllLink={true} />
+      <Education educationData={education} />
       <Certificates certificates={fallbackCertificates} />
-      <Projects projects={projectsList} />
-      <Experience />
       <Contact
         email={siteConfig.email}
         location={siteConfig.location}

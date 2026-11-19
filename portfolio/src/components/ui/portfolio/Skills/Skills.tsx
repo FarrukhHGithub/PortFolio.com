@@ -1,57 +1,59 @@
 import React from "react";
-import { Layout, Server, Database, Cloud, Wrench, LucideIcon } from "lucide-react";
-import { Container, SectionHeader, Card } from "@/components/ui/shared";
+import {
+  Layout,
+  Server,
+  Database,
+  Wrench,
+  Briefcase,
+  LucideIcon,
+} from "lucide-react";
+import { Container, SectionHeader, Card, Badge } from "@/components/ui/shared";
+import {
+  skillCategories as defaultCategories,
+  SkillCategoryGroup,
+} from "@/data/portfolio";
 import styles from "@/components/UIstyle/portfolio/skills.module.css";
 
-export interface SkillItem {
-  name: string;
-  category: string;
-}
-
 const categoryIcons: Record<string, LucideIcon> = {
-  Frontend: Layout,
   Backend: Server,
   Database: Database,
-  "DevOps & Cloud": Cloud,
+  Frontend: Layout,
   Tools: Wrench,
+  Professional: Briefcase,
 };
 
-const defaultSkillGroups: Record<string, string[]> = {
-  Frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "HTML / CSS"],
-  Backend: ["Node.js", "Express.js", "REST APIs", "JWT / Auth", "Zod"],
-  Database: ["MongoDB", "PostgreSQL", "Prisma ORM", "Redis"],
-  "DevOps & Cloud": ["AWS EC2", "AWS S3", "CloudFront", "Route 53", "Nginx", "PM2", "Certbot SSL"],
-  Tools: ["Git / GitHub", "Docker", "Postman", "Figma"],
-};
+interface SkillsProps {
+  groups?: SkillCategoryGroup[];
+}
 
-export function Skills({ skills = [] }: { skills?: SkillItem[] }) {
-  const groups = skills.length
-    ? skills.reduce<Record<string, string[]>>((acc, s) => {
-        (acc[s.category] ??= []).push(s.name);
-        return acc;
-      }, {})
-    : defaultSkillGroups;
-
+export function Skills({ groups = defaultCategories }: SkillsProps) {
   return (
     <section className={styles.section} id="skills">
       <Container>
         <SectionHeader
-          label="Skills &amp; Technologies"
+          label="Technical Skills"
           title="Battle-tested technical stack."
           description="Curated tools and technologies I use to build scalable, production-ready software."
         />
 
         <div className={styles.grid}>
-          {Object.entries(groups).map(([category, items]) => {
-            const Icon = categoryIcons[category] || Layout;
+          {groups.map((group) => {
+            const Icon = categoryIcons[group.category] || Layout;
             return (
-              <Card key={category} className={styles.categoryCard} hoverable>
+              <Card key={group.category} className={styles.categoryCard} hoverable>
                 <div className={styles.categoryHeader}>
-                  <Icon size={18} className={styles.categoryIcon} strokeWidth={2} />
-                  <h3 className={styles.categoryTitle}>{category}</h3>
+                  <div className={styles.categoryLeft}>
+                    <Icon size={18} className={styles.categoryIcon} strokeWidth={2} />
+                    <h3 className={styles.categoryTitle}>{group.category}</h3>
+                  </div>
+                  {group.isCoreStrength && (
+                    <Badge variant="brand" className={styles.coreBadge}>
+                      Core Strength
+                    </Badge>
+                  )}
                 </div>
                 <div className={styles.tags}>
-                  {items.map((item) => (
+                  {group.items.map((item) => (
                     <span key={item} className={styles.skillBadge}>
                       {item}
                     </span>

@@ -6,8 +6,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .card {
@@ -16,27 +16,21 @@
   height: 100%;
 }
 
-.cardTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-}
-
-.category {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-brand);
-}
-
 .title {
-  font-size: 1.25rem;
+  font-size: 1.1875rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--color-ink);
   margin-bottom: 0.5rem;
+}
+
+.titleLink {
+  color: inherit;
+  transition: color 0.15s ease;
+}
+
+.titleLink:hover {
+  color: var(--color-brand);
 }
 
 .summary {
@@ -67,10 +61,30 @@
 .footer {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: space-between;
   padding-top: 1rem;
   border-top: 1px solid var(--color-border);
   margin-top: auto;
+}
+
+.detailsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-brand);
+  transition: color 0.15s ease;
+}
+
+.detailsLink:hover {
+  text-decoration: underline;
+}
+
+.externalLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .link {
@@ -79,10 +93,16 @@
   gap: 0.375rem;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--color-ink);
+  color: var(--color-ink-muted);
   transition: color 0.15s ease;
 }
 
 .link:hover {
-  color: var(--color-brand);
+  color: var(--color-ink);
+}
+
+.allProjectsWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
 }
