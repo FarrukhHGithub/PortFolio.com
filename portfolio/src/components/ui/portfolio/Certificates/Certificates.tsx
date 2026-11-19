@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2, ExternalLink, Award } from "lucide-react";
+import Link from "next/link";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import { Container, SectionHeader, Card } from "@/components/ui/shared";
 import { Certificate, certificates as defaultCertificates } from "@/data/portfolio";
 import styles from "@/components/UIstyle/portfolio/certificates.module.css";
@@ -77,7 +78,11 @@ export function Certificates({
                 <CheckCircle2 size={14} className={styles.verifiedIcon} aria-label="Verified" />
               </div>
 
-              <h3 className={styles.title}>{cert.title}</h3>
+              <h3 className={styles.title}>
+                <Link href={`/certificates/${cert.id}`} className={styles.titleLink}>
+                  {cert.title}
+                </Link>
+              </h3>
 
               <p className={styles.description}>{cert.description}</p>
 
@@ -93,22 +98,14 @@ export function Certificates({
                 <span className={styles.credentialId} title="Credential Verification ID">
                   ID: {cert.credentialId}
                 </span>
-                {cert.verificationUrl ? (
-                  <a
-                    href={cert.verificationUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.verifyLink}
-                    aria-label={`Verify credential for ${cert.title}`}
-                  >
-                    <span>Verify</span>
-                    <ExternalLink size={12} />
-                  </a>
-                ) : (
-                  <span className={styles.verifyLink}>
-                    <Award size={12} /> Verified
-                  </span>
-                )}
+                <Link
+                  href={`/certificates/${cert.id}`}
+                  className={styles.verifyLink}
+                  aria-label={`View details for ${cert.title}`}
+                >
+                  <span>View Details</span>
+                  <ArrowRight size={13} />
+                </Link>
               </div>
             </Card>
           ))}

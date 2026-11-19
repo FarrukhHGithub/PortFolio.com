@@ -110,6 +110,15 @@
   line-height: 1.35;
 }
 
+.titleLink {
+  color: inherit;
+  transition: color 0.15s ease;
+}
+
+.titleLink:hover {
+  color: var(--color-brand);
+}
+
 .description {
   font-size: 0.84375rem;
   color: var(--color-ink-muted);
