@@ -86,7 +86,7 @@ export function Hero({
           >
             <span className={styles.contactItem}>
               <MapPin size={15} />
-              <span>Rawalpindi, Punjab, Pakistan</span>
+              <span>Skardu, Pakistan</span>
             </span>
             <span className={styles.separator}>•</span>
             <a href="tel:+923498115909" className={styles.contactLink}>

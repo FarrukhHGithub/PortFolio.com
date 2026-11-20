@@ -21,7 +21,7 @@ function WhatsAppIcon({ size = 18 }: { size?: number }) {
 
 export function Contact({
   email = "bussinessguy5909@gmail.com",
-  location = "Pakistan",
+  location = "Skardu, Pakistan",
   phone = "03498115909",
   whatsapp = "https://wa.me/923498115909",
 }: ContactProps) {

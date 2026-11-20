@@ -4,7 +4,7 @@ import styles from "@/components/UIstyle/portfolio/about.module.css";
 
 const summaryHighlights = [
   {
-    label: "Backend Core Strength",
+    label: "Backend Architecture",
     text: "Building robust TypeScript backends, Express APIs, JWT security, and scalable MongoDB/PostgreSQL schemas.",
   },
   {

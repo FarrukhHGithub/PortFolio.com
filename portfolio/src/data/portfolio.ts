@@ -31,7 +31,7 @@ export const siteConfig: SiteConfig = {
   summary:
     "Full-stack developer with 2+ years of experience building complete web applications with the MERN stack and Next.js, with particular strength in backend development: secure REST APIs, authentication, database design and admin systems. Started at Netbots SMC Private Limited, and now a freelancer delivering clinic, museum and tour company websites end to end.",
   experienceYears: "2+ years",
-  location: "Rawalpindi, Pakistan",
+  location: "Skardu, Pakistan",
   availableForWork: true,
   email: "bussinessguy5909@gmail.com",
   phone: "+92 349 8115909",
@@ -55,14 +55,12 @@ export type SkillCategory =
 
 export interface SkillCategoryGroup {
   category: SkillCategory;
-  isCoreStrength?: boolean;
   items: string[];
 }
 
 export const skillCategories: SkillCategoryGroup[] = [
   {
     category: "Backend",
-    isCoreStrength: true,
     items: [
       "Node.js",
       "Express.js",
@@ -167,7 +165,7 @@ export const experience: Experience[] = [
   {
     role: "Full-Stack (MERN & Next.js) Developer",
     company: "Netbots SMC Private Limited",
-    location: "Rawalpindi, Pakistan",
+    location: "Skardu, Pakistan",
     period: "Late 2024 — Mid 2025",
     bullets: [
       "Designed and built REST APIs with Node.js and Express.js using MVC structure and reusable middleware.",
@@ -203,7 +201,7 @@ export const aboutBio = [
 export const heroStats = [
   { value: "2+", label: "Years Experience" },
   { value: "6+", label: "Production Projects" },
-  { value: "Backend", label: "Core Strength" },
+  { value: "Full-Stack", label: "MERN & Next.js" },
 ];
 
 // ── Education & Languages ─────────────────────────────────────

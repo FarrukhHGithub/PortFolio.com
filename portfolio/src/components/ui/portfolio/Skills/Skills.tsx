@@ -47,9 +47,6 @@ export function Skills({ groups = defaultCategories }: SkillsProps) {
                     <Icon size={17} className={styles.categoryIcon} strokeWidth={2} />
                     <span>{group.category}</span>
                   </div>
-                  {group.isCoreStrength && (
-                    <span className={styles.coreBadge}>Core Strength</span>
-                  )}
                 </div>
                 <div className={styles.techList}>
                   {group.items.map((item) => (
