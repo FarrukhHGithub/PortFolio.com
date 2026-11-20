@@ -35,7 +35,7 @@ export function Certificates({
     <section className={styles.section} id="certificates">
       <Container>
         <SectionHeader
-          label="Certifications &amp; Credentials"
+          label="Certifications &amp; Qualifications"
           title="Verified technical certifications."
           description="Specialized credentials spanning modern front-end, high-performance backends, VPS server operations, AWS cloud architecture, and AI-assisted engineering."
         />

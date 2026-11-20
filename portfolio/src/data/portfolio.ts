@@ -207,6 +207,37 @@ export const heroStats = [
   { value: "Backend", label: "Core Strength" },
 ];
 
+// ── Education & Languages ─────────────────────────────────────
+export interface Education {
+  degree: string;
+  institution: string;
+  period: string;
+  status?: string;
+  location?: string;
+  details?: string;
+}
+
+export interface Language {
+  name: string;
+  level: string;
+}
+
+export const education: Education[] = [
+  {
+    degree: "BS Computer Science",
+    institution: "Virtual University of Pakistan",
+    period: "In Progress",
+    status: "In progress",
+    location: "Pakistan",
+    details: "Focus: Software Architecture, Algorithms, Database Management, and Web Technologies.",
+  },
+];
+
+export const languages: Language[] = [
+  { name: "English", level: "Professional" },
+  { name: "Urdu", level: "Native" },
+];
+
 // ── Certificates ──────────────────────────────────────────────
 export type CertificateCategory =
   | "Frontend"
