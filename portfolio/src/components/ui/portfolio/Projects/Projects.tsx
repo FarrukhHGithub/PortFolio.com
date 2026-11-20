@@ -22,7 +22,7 @@ export function Projects({
     <section className={styles.section} id="projects">
       <Container>
         <SectionHeader
-          label="Featured Work"
+          label="Key Projects"
           title={title}
           description={description}
         />

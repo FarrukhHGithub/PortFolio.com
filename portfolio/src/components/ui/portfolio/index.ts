@@ -8,5 +8,6 @@ export { ProjectFilter } from "./Projects/ProjectFilter";
 export { ProjectsCatalog } from "./Projects/ProjectsCatalog";
 export { Experience } from "./Experience/Experience";
 export { Certificates } from "./Certificates/Certificates";
+export { Education } from "./Education/Education";
 export { Contact } from "./Contact/Contact";
 export { Footer } from "./Footer/Footer";

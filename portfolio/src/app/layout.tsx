@@ -24,6 +24,14 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.summary,
+  icons: {
+    icon: [
+      { url: "/fullstack.png", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    shortcut: "/fullstack.png",
+    apple: "/fullstack.png",
+  },
   keywords: [
     "Full-Stack Developer",
     "MERN Stack",

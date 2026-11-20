@@ -15,7 +15,7 @@ export function Experience({ items = defaultExperience }: ExperienceProps) {
     <section className={styles.section} id="experience">
       <Container>
         <SectionHeader
-          label="Career History"
+          label="Professional Experience"
           title="Professional Experience."
           description="Production systems engineered across healthcare, museum, and tour platforms."
         />

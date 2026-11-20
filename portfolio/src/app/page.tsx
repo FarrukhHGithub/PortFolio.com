@@ -3,16 +3,19 @@ import {
   projects,
   skillCategories,
   experience,
+  education,
+  languages,
   certificates as fallbackCertificates,
 } from "@/data/portfolio";
 import {
   Navbar,
   Hero,
   About,
-  Experience,
   Skills,
+  Experience,
   Projects,
   Certificates,
+  Education,
   Contact,
   Footer,
 } from "@/components/ui/portfolio";
@@ -32,10 +35,11 @@ export default async function Home() {
         cvUrl={siteConfig.cvUrl}
       />
       <About />
-      <Experience items={experience} />
       <Skills groups={skillCategories} />
+      <Experience items={experience} />
       <Projects projects={featuredProjects} showAllLink={true} />
       <Certificates certificates={fallbackCertificates} />
+      <Education items={education} languagesList={languages} />
       <Contact
         email={siteConfig.email}
         location={siteConfig.location}

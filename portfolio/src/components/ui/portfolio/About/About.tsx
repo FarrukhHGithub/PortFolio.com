@@ -31,7 +31,7 @@ export function About({ bio = defaultBio }: AboutProps) {
     <section className={styles.section} id="about">
       <Container>
         <SectionHeader
-          label="About"
+          label="Professional Summary"
           title="Engineered for reliability & scale."
           description="Bridging modern front-end design with resilient backend systems and production deployments."
         />

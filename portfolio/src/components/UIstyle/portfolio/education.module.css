@@ -1,0 +1,128 @@
+.section {
+  padding-top: clamp(3rem, 5vw, 4.5rem);
+  padding-bottom: clamp(3rem, 5vw, 4.5rem);
+  border-top: 1px solid var(--color-border);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.subHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.5rem;
+}
+
+.subIcon {
+  color: var(--color-brand);
+}
+
+.subTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+}
+
+.eduCard,
+.langCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.degree {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.statusBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-brand);
+  background-color: var(--color-brand-glow);
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.institution {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+}
+
+.eduDetail {
+  font-size: 0.875rem;
+  color: var(--color-ink-subtle);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.langList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.langItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.langNameRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9375rem;
+}
+
+.langName {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.langLevel {
+  font-size: 0.8125rem;
+  color: var(--color-ink-muted);
+}
+
+.langBar {
+  height: 6px;
+  background-color: var(--color-surface-hover);
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.langProgress {
+  height: 100%;
+  background-color: var(--color-brand);
+  border-radius: 9999px;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
