@@ -7,7 +7,7 @@ import {
   Briefcase,
   LucideIcon,
 } from "lucide-react";
-import { Container, SectionHeader, Card, Badge } from "@/components/ui/shared";
+import { Container, SectionHeader } from "@/components/ui/shared";
 import {
   skillCategories as defaultCategories,
   SkillCategoryGroup,
@@ -36,30 +36,29 @@ export function Skills({ groups = defaultCategories }: SkillsProps) {
           description="Curated tools and technologies I use to build scalable, production-ready software."
         />
 
-        <div className={styles.grid}>
+        <div className={styles.timeline}>
           {groups.map((group) => {
             const Icon = categoryIcons[group.category] || Layout;
             return (
-              <Card key={group.category} className={styles.categoryCard} hoverable>
-                <div className={styles.categoryHeader}>
-                  <div className={styles.categoryLeft}>
-                    <Icon size={18} className={styles.categoryIcon} strokeWidth={2} />
-                    <h3 className={styles.categoryTitle}>{group.category}</h3>
+              <div key={group.category} className={styles.item}>
+                <div className={styles.dot} aria-hidden="true" />
+                <div className={styles.headerRow}>
+                  <div className={styles.categoryTitle}>
+                    <Icon size={17} className={styles.categoryIcon} strokeWidth={2} />
+                    <span>{group.category}</span>
                   </div>
                   {group.isCoreStrength && (
-                    <Badge variant="brand" className={styles.coreBadge}>
-                      Core Strength
-                    </Badge>
+                    <span className={styles.coreBadge}>Core Strength</span>
                   )}
                 </div>
-                <div className={styles.tags}>
+                <div className={styles.techList}>
                   {group.items.map((item) => (
-                    <span key={item} className={styles.skillBadge}>
+                    <span key={item} className={styles.techBadge}>
                       {item}
                     </span>
                   ))}
                 </div>
-              </Card>
+              </div>
             );
           })}
         </div>

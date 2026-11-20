@@ -3,6 +3,8 @@ import { db } from "@/lib/db";
 import { contactSchema } from "@/lib/validate";
 import { rateLimit, clientIp } from "@/lib/ratelimit";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: Request) {
   const ip = clientIp(req);
   if (!rateLimit(`contact:${ip}`, 3, 60 * 60_000))

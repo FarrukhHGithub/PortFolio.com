@@ -3,6 +3,8 @@ import { db } from "@/lib/db";
 import { getSession } from "@/lib/auth";
 import { projectSchema } from "@/lib/validate";
 
+export const dynamic = "force-dynamic";
+
 type Ctx = { params: { id: string } };
 
 export async function PUT(req: Request, { params }: Ctx) {

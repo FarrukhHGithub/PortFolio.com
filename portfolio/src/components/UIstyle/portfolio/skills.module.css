@@ -4,39 +4,49 @@
   border-top: 1px solid var(--color-border);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.categoryCard {
+.timeline {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  gap: 2rem;
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--color-border);
 }
 
-.categoryHeader {
+.item {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--color-border);
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.categoryLeft {
+.dot {
+  position: absolute;
+  left: calc(-1.5rem - 5px);
+  top: 0.35rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-brand);
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 0 0 3px var(--color-brand-glow);
+}
+
+.headerRow {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.625rem;
 }
 
 .categoryTitle {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 700;
   color: var(--color-ink);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .categoryIcon {
@@ -46,26 +56,33 @@
 .coreBadge {
   font-size: 0.6875rem;
   font-weight: 600;
+  color: var(--color-brand);
+  background-color: var(--color-brand-glow);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-.tags {
+.techList {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.skillBadge {
+.techBadge {
   font-size: 0.8125rem;
   font-weight: 500;
-  padding: 0.35rem 0.65rem;
+  padding: 0.3rem 0.65rem;
   border-radius: var(--radius-sm);
-  background-color: var(--color-surface-hover);
+  background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   color: var(--color-ink);
   transition: all 0.15s ease;
 }
 
-.skillBadge:hover {
-  border-color: var(--color-border-hover);
+.techBadge:hover {
+  border-color: var(--color-brand);
   color: var(--color-brand);
 }
