@@ -2,7 +2,6 @@ import React from "react";
 import { siteConfig, certificates } from "@/data/portfolio";
 import { Container, Breadcrumb } from "@/components/ui/shared";
 import { Navbar, Footer, Certificates } from "@/components/ui/portfolio";
-import styles from "@/components/UIstyle/portfolio/certificates.module.css";
 
 export const metadata = {
   title: "Certificates & Qualifications | Farrukh Hussain",
@@ -23,7 +22,7 @@ export default function CertificatesPage() {
             ]}
           />
         </Container>
-        <Certificates certificates={certificates} />
+        <Certificates certificates={certificates} variant="cards" showAllLink={false} />
       </div>
       <Footer
         name={siteConfig.name}
@@ -35,4 +34,3 @@ export default function CertificatesPage() {
     </main>
   );
 }
-

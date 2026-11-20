@@ -1,4 +1,3 @@
-// In-memory limiter (single VPS / single PM2 instance). Use Redis if you scale out.
 const hits = new Map<string, { n: number; reset: number }>();
 export function rateLimit(key: string, max: number, windowMs: number) {
   const now = Date.now(), h = hits.get(key);

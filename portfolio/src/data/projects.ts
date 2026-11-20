@@ -1,7 +1,5 @@
-// ============================================================
 // PROJECTS DATA — Strictly based on CV facts
 // Node.js, Express, MongoDB, Next.js Full-Stack Systems
-// ============================================================
 
 export type ProjectCategory = "Tour" | "Healthcare" | "Museum";
 export type ProjectStatus = "completed" | "in-progress";

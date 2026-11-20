@@ -7,7 +7,6 @@ const isAdminApi = (p: string) => p.startsWith("/api/admin");
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // CSRF defence: state-changing API calls must come from our own origin
   if (pathname.startsWith("/api") && !["GET", "HEAD", "OPTIONS"].includes(req.method)) {
     const origin = req.headers.get("origin");
     if (!origin || new URL(origin).host !== req.nextUrl.host)
@@ -19,7 +18,7 @@ export async function middleware(req: NextRequest) {
     let ok = false;
     try {
       if (token) { await jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET)); ok = true; }
-    } catch {}
+    } catch { }
     if (!ok) {
       return isAdminApi(pathname)
         ? NextResponse.json({ error: "Unauthorized" }, { status: 401 })
