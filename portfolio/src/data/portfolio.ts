@@ -132,7 +132,6 @@ export const skillCategories: SkillCategoryGroup[] = [
   },
 ];
 
-// Flat skills array for backward compatibility & DB fallback
 export interface Skill {
   name: string;
   category: string;
