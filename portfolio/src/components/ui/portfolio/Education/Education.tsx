@@ -1,6 +1,5 @@
 import React from "react";
-import { GraduationCap, Languages as LanguagesIcon } from "lucide-react";
-import { Container, SectionHeader, Card } from "@/components/ui/shared";
+import { Container, SectionHeader } from "@/components/ui/shared";
 import {
   education as defaultEducation,
   languages as defaultLanguages,
@@ -27,51 +26,56 @@ export function Education({
           description="Formal computer science education and professional communication proficiency."
         />
 
-        <div className={styles.grid}>
-          <div className={styles.column}>
-            <div className={styles.subHeader}>
-              <GraduationCap size={20} className={styles.subIcon} />
-              <h3 className={styles.subTitle}>Education</h3>
-            </div>
-            {items.map((item, idx) => (
-              <Card key={idx} className={styles.eduCard} hoverable>
-                <div className={styles.cardHeader}>
-                  <span className={styles.degree}>{item.degree}</span>
-                  <span className={styles.statusBadge}>{item.period}</span>
-                </div>
-                <div className={styles.institution}>{item.institution}</div>
-                {item.details && <p className={styles.eduDetail}>{item.details}</p>}
-              </Card>
-            ))}
-          </div>
-
-          <div className={styles.column}>
-            <div className={styles.subHeader}>
-              <LanguagesIcon size={20} className={styles.subIcon} />
-              <h3 className={styles.subTitle}>Languages</h3>
-            </div>
-            <Card className={styles.langCard} hoverable>
-              <div className={styles.langList}>
-                {languagesList.map((lang, idx) => (
-                  <div key={idx} className={styles.langItem}>
-                    <div className={styles.langNameRow}>
-                      <span className={styles.langName}>{lang.name}</span>
-                      <span className={styles.langLevel}>{lang.level}</span>
-                    </div>
-                    <div className={styles.langBar}>
-                      <div
-                        className={styles.langProgress}
-                        style={{ width: lang.name === "Urdu" ? "100%" : "90%" }}
-                      />
-                    </div>
-                  </div>
-                ))}
+        <div className={styles.timeline}>
+          {items.map((item, idx) => (
+            <div key={idx} className={styles.item}>
+              <div className={styles.dot} aria-hidden="true" />
+              <div className={styles.period}>{item.period}</div>
+              <div className={styles.roleHeader}>
+                <span>{item.degree}</span>
+                <span className={styles.institution}>— {item.institution}</span>
               </div>
-            </Card>
+              <ul className={styles.bullets}>
+                <li>
+                  <strong>Focus:</strong> Software Architecture, Algorithms, Database Management, and Web Technologies.
+                </li>
+                <li>
+                  <strong>Core Coursework:</strong> Data Structures &amp; Algorithms, Object-Oriented Programming, Database Systems, Computer Networks, Operating Systems, Web Application Development.
+                </li>
+              </ul>
+              <div className={styles.techList}>
+                <span className={styles.techBadge}>Computer Science</span>
+                <span className={styles.techBadge}>Software Engineering</span>
+                <span className={styles.techBadge}>Data Structures</span>
+                <span className={styles.techBadge}>Algorithms</span>
+                <span className={styles.techBadge}>Database Systems</span>
+              </div>
+            </div>
+          ))}
+
+          <div className={styles.item}>
+            <div className={styles.dot} aria-hidden="true" />
+            <div className={styles.period}>Proficiency</div>
+            <div className={styles.roleHeader}>
+              <span>Languages &amp; Professional Communication</span>
+            </div>
+            <ul className={styles.bullets}>
+              {languagesList.map((lang) => (
+                <li key={lang.name}>
+                  <strong>{lang.name}:</strong> {lang.level} {lang.name === "English" ? "(Technical documentation, code reviews, system design, and client communication)" : "(Fluent / Native proficiency)"}
+                </li>
+              ))}
+            </ul>
+            <div className={styles.techList}>
+              {languagesList.map((lang) => (
+                <span key={lang.name} className={styles.techBadge}>
+                  {lang.name} ({lang.level})
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </Container>
     </section>
   );
 }
-

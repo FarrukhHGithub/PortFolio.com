@@ -3,6 +3,8 @@ import { db } from "@/lib/db";
 import { getSession } from "@/lib/auth";
 import { projectSchema } from "@/lib/validate";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   return NextResponse.json(await db.project.findMany({ orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }] }));
 }

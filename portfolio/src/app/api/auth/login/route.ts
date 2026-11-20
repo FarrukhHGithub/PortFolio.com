@@ -5,6 +5,8 @@ import { createSession } from "@/lib/auth";
 import { loginSchema } from "@/lib/validate";
 import { rateLimit, clientIp } from "@/lib/ratelimit";
 
+export const dynamic = "force-dynamic";
+
 const DUMMY = "$2a$12$C6UzMDM.H6dfI/f/IKcEeO5Yk3pGg8e1c0yCw9kYfXq0M1y3vQmGa";
 
 export async function POST(req: Request) {
